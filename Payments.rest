@@ -1,0 +1,62 @@
+### Read
+
+GET http://localhost:8080/apiPayments
+Content-Type: application/json
+
+
+###
+
+### Create
+POST http://localhost:8080/payment
+Content-Type: application/json
+
+{
+    "datePaid": "datePaid",
+    "installCommission": "installCommission",
+    "CAPPayment": "CAPPayment",
+    "clawbackBONUS": "clawbackBONUS",
+    "totalinPeriod": "totalinPeriod",
+    "prevPaid": "prevPaid",
+    "totalProjectCommission": "totalProjectCommission",
+    "projectId": "projId"
+}
+
+###
+
+### Read
+
+GET http://localhost:8080/payment?paymentId=dPgmuEAWEbiwUIpUlIp3
+Content-Type: application/json
+
+
+###
+
+### UPDATE
+
+POST http://localhost:8080/payment
+Content-Type: application/json
+
+{
+    "method": "put",
+    "paymentId": "dPgmuEAWEbiwUIpUlIp3",
+    "datePaid": "datePaid",
+    "installCommission": "UPDATED again",
+    "CAPPayment": "CAPPayment",
+    "clawbackBONUS": "clawbackBONUS",
+    "totalinPeriod": "totalinPeriod",
+    "prevPaid": "prevPaid",
+    "totalProjectCommission": "totalProjectCommission",
+    "projectId": "cra"
+}
+
+###
+
+### DELETE
+
+POST http://localhost:8080/payment
+Content-Type: application/json
+
+{
+    "method": "delete",
+    "paymentId": "SNQUzAbeaS8kilXxTYUM"   
+}

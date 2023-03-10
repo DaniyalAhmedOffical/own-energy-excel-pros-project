@@ -1,0 +1,43 @@
+
+### Create
+
+POST http://localhost:8080/Form
+Content-Type: application/json
+
+{
+    "first_name": "Karim",
+    "last_name": "Benzema",
+    "email": "kbnueve",
+    "phone": "123",
+    "notes": "notes",
+    "street": "street",
+    "city": "city",
+    "state": "state",
+    "zip": "zip",
+    "utilPic": "",
+    "dateCreated": "today",
+    "rep": "rep",
+    "setter": "setter",
+    "dateTime": "dateTime"
+}
+
+
+### Read
+
+GET http://localhost:8080/lead?leadId=8kZylaFm1ZmkOn5Nl2eh
+Content-Type: application/json
+
+
+### Read all
+
+GET http://localhost:8080/leads
+Content-Type: application/json
+
+### Update All to this status
+
+POST http://localhost:8080/updateAllLeadsStatuses
+Content-Type: application/json
+
+{
+    "status": "K2aGV2F40O0ijHlVJQgP"
+}

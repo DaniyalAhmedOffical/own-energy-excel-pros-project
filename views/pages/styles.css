@@ -1,0 +1,144 @@
+/*  Styles */
+:root {
+    --theme-color: var(--color-purple);
+}
+
+/*custom font*/
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+/*basic reset*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    font-family: montserrat, arial, verdana;
+}
+
+/*form styles*/
+.form-title {
+    width: 100%;
+    margin: 50px auto 0 auto;
+    text-align: center;
+    position: relative;
+}
+
+#msform {
+    width: 100%;
+    max-width: 800px;
+    margin: 50px auto;
+    text-align: center;
+    position: relative;
+}
+
+@media screen and (max-width: 900px) {
+    body {
+        background-image: url('./lead\ input\ form.png');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+        background-size: cover;
+        text-align: center;
+    }
+
+    #msform fieldset {
+        width: 80%;
+    }
+
+    #msform .action-button {
+        width: 80%;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    body {
+        background-image: url('./bgDesktop.png');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+        background-size: cover;
+
+    }
+
+    #msform fieldset {
+        width: 50%;
+    }
+
+    #msform .action-button {
+        width: 43%;
+    }
+
+}
+
+#msform fieldset {
+    background: #131F28;
+    border: 0 none;
+    border-radius: 20px;
+    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+    padding: 20px 30px;
+    box-sizing: border-box;
+
+    margin: auto;
+    margin-top: 20px;
+
+    /* margin: 20% 10%; */
+    /*stacking fieldsets above each other*/
+    position: relative;
+}
+
+/*Hide all except first fieldset*/
+#msform fieldset:not(:first-of-type) {
+    display: none;
+}
+
+/*inputs*/
+#msform input,
+#msform select,
+#msform textarea,
+#msform div {
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    width: 80%;
+    box-sizing: border-box;
+    font-family: montserrat, arial, verdana;
+    color: #2C3E50;
+    font-size: 20px;
+}
+
+/*buttons*/
+#msform .action-button {
+    /* width: 145px; */
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    display: inline-block;
+    background: #3A96B8;
+    font-size: 18px;
+    color: white;
+    border: 0 none;
+    border-radius: 10px;
+
+    cursor: pointer;
+    padding: 10px 0px;
+    margin: 10px 10px;
+}
+
+#msform .action-button:hover,
+#msform .action-button:focus {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #3A96B8;
+}
+
+#msform .fileUp-Button:hover,
+#msform .fileUp-Button:focus {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #3A96B8;
+}
+
+.modal-dialog {
+    margin: 0px;
+}
+
+body {
+    padding-left: 0px !important;
+}

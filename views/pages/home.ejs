@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0" />
+  <base target="_top">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <!-- <link rel="stylesheet" href="https://drive.google.com/uc?export=view&id=1__noaYifc3prBiga9d40Qe7h2eOBlHzd"> -->
+
+  <title>Home</title>
+
+</head>
+
+<body>
+
+  <div id="msform">
+    <img class="top-image" src="./own+menu+logo-removebg-preview.png"
+      style="line-height: 1;width: 250px; margin: 10px; text-align:center;" alt="Own Energy">
+
+
+
+    <% if (locals.succ) {%>
+      <h2 style="margin:20px;">Lead Form Submitted!</h2>
+      <% } %>
+
+
+        <fieldset>
+          <a href="./Form" id="form">
+            <div class="action-button">LEAD FORM</div>
+          </a>
+          <a href="./views/leads" id="list">
+            <div class="action-button">LEAD LIST</div>
+          </a>
+
+          <a href="./views/leaderboardSetters" id="list">
+            <div class="action-button">SETTERS LEADERBOARD</div>
+          </a>
+
+          <a href="./views/leaderboard" id="list">
+            <div class="action-button">CLOSER LEADERBOARD</div>
+          </a>
+
+
+          <% if (data.admin) {%>
+            
+            <a href="./payments" id="payment">
+              <div class="action-button">PAYMENTS</div>
+            </a>
+            <a href="./expenses" id="expenses">
+              <div class="action-button">EXPENSES</div>
+            </a>
+          <% } %>
+          <% if (data.manager) {%>
+            <a href="./projects" id="project">
+              <div class="action-button">PROJECTS</div>
+            </a>
+            <a href="./views/users" id="users">
+              <div class="action-button">USERS</div>
+            </a>
+          <% } %>
+            
+            
+        </fieldset>
+  </div>
+
+</body>
+
+</html>

@@ -1,0 +1,133 @@
+
+
+
+### - Irfan
+
+
+POST http://localhost:8080/user
+Content-Type: application/json
+
+{
+    "email": "irfan@excel-pros.com",
+    "password": "aaaa",
+    "available": false,
+    "name": "Irfan Sharif",
+    "accessLevel": "Admin",
+    "location": "Ft Myers",
+    "calId": ""
+}
+
+### - Imran2
+
+POST http://localhost:8080/user
+Content-Type: application/json
+
+{
+    "email": "idin33@gmail.com",
+    "password": "aaaa",
+    "available": true,
+    "name": "Imran Din",
+    "accessLevel": "Rep",
+    "location": "Ft Myers",
+    "calId": "idin33@gmail.com"
+}
+
+### - Roman
+
+POST http://localhost:8080/user
+Content-Type: application/json
+
+{
+    "email": "r.miller@ownourenergy.com",
+    "password": "12345",
+    "available": true,
+    "name": "Roman Miller",
+    "accessLevel": "Admin",
+    "location": "Ft Myers",
+    "calId": ""
+}
+
+### - OWN Admin  
+
+POST http://localhost:8080/user
+Content-Type: application/json
+
+{
+    "email": "truegrit@gmail.com",
+    "password": "12345",
+    "available": false,
+    "name": "Rep",
+    "accessLevel": "Rep",
+    "location": "Ft Myers",
+    "calId": "truegrit@gmail.com"
+}
+
+### Test 
+
+POST http://localhost:8080/user
+Content-Type: application/json
+
+{
+    "email": "truegrit@gmail.com",
+    "password": "12345",
+    "available": false,
+    "name": "DELETE ME",
+    "accessLevel": "Rep",
+    "location": "Ft Myers",
+    "calId": "truegrit@gmail.com"
+}
+
+
+### Read
+
+GET http://localhost:8080/user?userId=daVCCFiv1WVuw0jfLTua
+Content-Type: application/json
+
+### UPDATE
+
+POST http://localhost:8080/user
+Content-Type: application/json
+
+{
+    "method": "put",
+    "userId": "JEu9TiHqYMPSewLpg7Bj",
+    "available": false,
+    "name": "TEST",
+    "accessLevel": "Rep",
+    "location": "Ft Myers",
+    "calId": ""
+}
+
+### UPDATE
+
+POST http://localhost:8080/user
+Content-Type: application/json
+
+{
+    "method": "put",
+    "userId": "JEu9TiHqYMPSewLpg7Bj",
+    "available": false,
+    "name": "RepName2",
+    "accessLevel": "Rep",
+    "location": "Ft Myers",
+    "calId": "Something"
+}
+
+### DELETE 
+
+POST http://localhost:8080/user
+Content-Type: application/json
+
+{
+    "method": "delete",
+    "userId": "JEu9TiHqYMPSewLpg7Bj"   
+}
+
+###
+
+POST http://localhost:8080/updateAllUsersActivity
+Content-Type: application/json
+
+{
+    "active": true
+}

@@ -1,0 +1,180 @@
+POST http://localhost:8080/user
+Content-Type: application/json
+
+{
+    "email": "info@excel-pros.com",
+    "password": "aaaa"
+}
+
+
+###
+
+
+
+POST http://localhost:8080/user
+Content-Type: application/json
+
+{
+    "email": "r.miller@ownourenergy.com",
+    "password": "1234"
+}
+
+###
+
+POST http://localhost:8080/user
+Content-Type: application/json
+
+{
+    "email": "xxxx@excel-pros.com",
+    "password": "1234"
+}
+
+###
+
+
+### Read
+
+GET http://localhost:8080/user?userId=2fT0owX2sZdzdVS4jtqI
+Content-Type: application/json
+
+
+###
+
+POST http://localhost:8080/login
+Content-Type: application/json
+
+{
+    "email": "info@excel-pros.com",
+    "password": "aaaa"
+}
+
+###
+
+POST http://localhost:8080/project
+Content-Type: application/json
+
+{
+    "projectName": "Project XXXX"
+}
+
+###
+
+POST http://localhost:8080/payment
+Content-Type: application/json
+
+{
+    "datePaid": "datePaid",
+    "installCommission": "req",
+    "CAPPayment": "req",
+    "clawbackBonus": "req",
+    "totalinPeriod": "req",
+    "prevPaid": "req",
+    "totalProjectCommission": "req",
+    "projectId": "P3gEFBbw5VkopwRCbkNs"
+}
+
+###
+
+POST http://localhost:8080/project
+Content-Type: application/json
+
+{
+    "customerName": "New Customer4",
+    "systemSize": "data",
+    "grossPPW": "data",
+    "redline": "data",
+    "sOW": "data",
+    "rep": "data",
+    "setter": "data",
+    "secondaryRep": "data",
+    "secondaryRepSplit": "data",
+    "product": "data",
+    "installPartner": "data",
+    "stateUtility": "data",
+    "cancelDate": "data",
+    "approvedDate": "data",
+    "cAPDate": "data",
+    "installDate": "data",
+    "paidUpfrontDate": "data",
+    "paidInstallDate": "data",
+    "dealerFeePercent": "data",
+    "dealerFeeDollars": "data",
+    "tsp": "tsp"
+}
+
+###
+
+
+
+### 
+
+POST http://localhost:8080/expense
+Content-Type: application/json
+
+{
+    "payDate": "2020-01-01",
+    "type": "PayCode",
+    "user": "userId",
+    "description": "description",
+    "amount": 100,
+    "paidOut": false
+}
+
+###
+
+Get http://localhost:8080/project?projectId=P3gEFBbw5VkopwRCbkNs
+Content-Type: application/json
+
+###
+
+POST http://localhost:8080/project
+Content-Type: application/json
+
+{
+    "method": "put",
+    "projectId": "P3gEFBbw5VkopwRCbkNs",
+    "customerName": "Name Changed3",
+    "systemSize": "data",
+    "grossPPW": "data",
+    "redline": "data",
+    "sOW": "data",
+    "rep": "data",
+    "setter": "data",
+    "secondaryRep": "data",
+    "secondaryRepSplit": "data",
+    "product": "data",
+    "installPartner": "data",
+    "stateUtility": "data",
+    "cancelDate": "data",
+    "approvedDate": "data",
+    "cAPDate": "data",
+    "installDate": "data",
+    "paidUpfrontDate": "data",
+    "paidInstallDate": "data",
+    "dealerFeePercent": "data",
+    "dealerFeeDollars": "data",
+    "tsp": "tsp"    
+}
+
+###
+
+POST http://localhost:8080/project
+Content-Type: application/json
+
+{
+    "method": "delete",
+    "projectId": "0Z66FHiQ5YJlkoY7hGAB"   
+}
+
+
+
+###
+
+POST  https://oauth2.googleapis.com/token 
+
+{
+    "client_id": "1079660110912-g6rsamm419cfgkhk5jmjr8oihalnb0v3.apps.googleusercontent.com",
+    "client_secret": "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",
+    "refresh_token": "1//04mgutpOymGEACgYIARAAGAQSNwF-L9Irw3M6ZDnRDieM5JHpwqvlf9gQG9rrRjMgvpmMl6OmKDdUCVfU84EXYXH32kCIC2PJ4Vk",
+    "grant_type": "refresh_token"
+}

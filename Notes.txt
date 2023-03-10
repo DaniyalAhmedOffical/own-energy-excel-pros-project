@@ -1,0 +1,7 @@
+Leads.ejs
+
+1. Remove word Actions
+2. Change pencil to white eye 
+3. that button will have an edit lead function 
+	a) fill out fields in edit modal
+4. Make modal full screen

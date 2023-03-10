@@ -1,0 +1,1457 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500&display=swap" rel="stylesheet">
+  <title>Leads</title>
+
+
+  <style>
+    @media screen and (max-width: 900px) {
+      body {
+        background-image: url('../lead\ input\ form.png');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+        background-size: cover;
+        text-align: center;
+      }
+
+      table.table tr th,
+      table.table tr td {
+        word-wrap: break-word;
+      }
+
+
+      #container {
+        display: grid;
+        margin: 10px;
+        grid-template-columns: 1fr;
+        grid-template-rows: 0.2fr 0.1fr 1.2fr 1fr 1fr 1fr;
+
+        grid-template-areas:
+          "logo"
+          "pgTitle"
+          "main";
+
+        height: 100vh;
+      }
+
+      #main {
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        margin: 0;
+        padding: 0;
+      }
+
+      #pgTitle {
+        grid-area: pgTitle;
+        background: #1c617b;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        text-align: center;
+      }
+
+      #navBar {
+        display: none;
+      }
+
+      div {
+        background: #131F28;
+        box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+      }
+
+      #leadSearch {
+        width: 100%;
+        display: inline;
+      }
+
+      #searchDiv {
+        padding: 6px;
+      }
+
+      #addbtn {
+        display: block;
+        margin-top: 4px;
+        width: 100%;
+        /* height: 34px;
+            line-height: 20px; */
+      }
+
+      #table-div {
+        padding: 0 !important;
+      }
+
+      .dropdown {
+        padding-left: 6px;
+        padding-right: 6px;
+      }
+
+      .dropdown-list {
+
+        margin-top: 0px;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        border-radius: 0px;
+
+      }
+    }
+
+    @media screen and (min-width: 900px) {
+      body {
+        background-image: url('../bgDesktop.png');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+        background-size: cover;
+
+      }
+
+      table.table td a {
+        display: inline-block;
+      }
+
+      #logo {
+        margin-left: 8%;
+      }
+
+      #container {
+        display: grid;
+        grid-template-columns: 0.6fr 1fr 1fr;
+        grid-template-rows: 0.2fr 4fr;
+
+        grid-template-areas:
+          "logo logo pgTitle"
+          "navBar main main";
+        grid-gap: 0.4rem;
+        height: 100vh;
+
+      }
+
+      #main {
+        border-top-left-radius: 20px;
+      }
+
+      #pgTitle {
+        margin-top: 10px;
+        font-size: x-large;
+
+      }
+
+      #navBar {
+        background: #131F28;
+        border-top-right-radius: 20px;
+      }
+
+      .nav-button {
+        background: #1c617b;
+        ;
+        margin-top: 5px;
+        border-bottom-right-radius: 20px;
+        border-top-right-radius: 20px;
+        font-weight: bold;
+      }
+
+      #leadSearch {
+        width: 73%;
+        display: inline;
+      }
+
+      #addbtn {
+        display: inline-block;
+        width: 25%;
+        height: 34px;
+        line-height: 20px;
+        margin-bottom: 15px;
+      }
+
+      .dropdown-list #addbtn {
+        width: 150px;
+      }
+
+      #searchDiv {
+        display: flex;
+        line-height: 100px;
+        padding-bottom: 0;
+      }
+
+      #table-div {
+        padding-top: 0;
+      }
+
+      div {
+        padding: 20px 30px;
+      }
+    }
+
+
+    div {
+      border: 0 none;
+      color: #fff;
+    }
+
+    #logo {
+      grid-area: logo;
+    }
+
+    #pgTitle {
+      padding: 20px 30px;
+      background: #1c617b;
+      grid-area: pgTitle;
+    }
+
+    #navBar {
+      grid-area: navBar;
+      padding-left: 0px;
+    }
+
+    #main {
+      grid-area: main;
+      background: #131F28;
+      text-align: left;
+
+      box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+    }
+
+    #leadsBx {
+      grid-area: leadsBx;
+    }
+
+    #projectsBx {
+      grid-area: projectsBx;
+    }
+
+    #payrollBx {
+      grid-area: payrollBx;
+    }
+
+    a:link {
+      text-decoration: none;
+    }
+
+    a:visited {
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: none;
+    }
+
+    a:active {
+      text-decoration: none;
+    }
+  </style>
+
+  <style>
+    .table-wrapper {
+      background: #fff;
+      padding: 20px 25px;
+      margin: 30px 0;
+      border-radius: 3px;
+      box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+    }
+
+    .table-title {
+      padding-bottom: 15px;
+      background: #435d7d;
+      color: #fff;
+      padding: 16px 30px;
+      margin: -20px -25px 10px;
+      border-radius: 3px 3px 0 0;
+    }
+
+    .table-title h2 {
+      margin: 5px 0 0;
+      font-size: 24px;
+    }
+
+    .table-title .btn-group {
+      float: right;
+    }
+
+    .table-title .btn {
+      color: #fff;
+      float: right;
+      font-size: 13px;
+      border: none;
+      min-width: 50px;
+      border-radius: 2px;
+      border: none;
+      outline: none !important;
+      margin-left: 10px;
+    }
+
+    .table-title .btn i {
+      float: left;
+      font-size: 21px;
+      margin-right: 5px;
+    }
+
+    .table-title .btn span {
+      float: left;
+      margin-top: 2px;
+    }
+
+    table.table tr th,
+    table.table tr td {
+      border-color: #e9e9e9;
+      padding: 12px 15px;
+      vertical-align: middle;
+    }
+
+    table.table tr th:last-child {
+      width: 100px;
+    }
+
+    table.table-striped tbody tr:nth-of-type(odd) {
+      background-color: #fcfcfc;
+    }
+
+
+
+    table.table th i {
+      font-size: 13px;
+      margin: 0 5px;
+      cursor: pointer;
+    }
+
+    table.table td:last-child i {
+      opacity: 0.9;
+      font-size: 22px;
+      margin: 0 5px;
+    }
+
+    table.table td a {
+      font-weight: bold;
+      color: #566787;
+      text-decoration: none;
+      outline: none !important;
+    }
+
+
+    table.table td a.edit {
+      color: #FFC107;
+    }
+
+    table.table td a.delete {
+      color: #F44336;
+    }
+
+    table.table td i {
+      font-size: 19px;
+    }
+
+    table.table .avatar {
+      border-radius: 50%;
+      vertical-align: middle;
+      margin-right: 10px;
+    }
+
+    .pagination {
+      float: right;
+      margin: 0 0 5px;
+    }
+
+    .pagination li a {
+      border: none;
+      font-size: 13px;
+      min-width: 30px;
+      min-height: 30px;
+      color: #999;
+      margin: 0 2px;
+      line-height: 30px;
+      border-radius: 2px !important;
+      text-align: center;
+      padding: 0 6px;
+    }
+
+
+    .pagination li.active a,
+    .pagination li.active a.page-link {
+      background: #03A9F4;
+    }
+
+
+    .pagination li.disabled i {
+      color: #ccc;
+    }
+
+    .pagination li i {
+      font-size: 16px;
+      padding-top: 6px
+    }
+
+    .hint-text {
+      float: left;
+      margin-top: 10px;
+      font-size: 13px;
+    }
+
+    /* Custom checkbox */
+    .custom-checkbox {
+      position: relative;
+    }
+
+    .custom-checkbox input[type="checkbox"] {
+      opacity: 0;
+      position: absolute;
+      margin: 5px 0 0 3px;
+      z-index: 9;
+    }
+
+    .custom-checkbox label:before {
+      width: 18px;
+      height: 18px;
+    }
+
+    .custom-checkbox label:before {
+      content: '';
+      margin-right: 10px;
+      display: inline-block;
+      vertical-align: text-top;
+      background: white;
+      border: 1px solid #bbb;
+      border-radius: 2px;
+      box-sizing: border-box;
+      z-index: 2;
+    }
+
+    .custom-checkbox input[type="checkbox"]:checked+label:after {
+      content: '';
+      position: absolute;
+      left: 6px;
+      top: 3px;
+      width: 6px;
+      height: 11px;
+      border: solid #000;
+      border-width: 0 3px 3px 0;
+      transform: inherit;
+      z-index: 3;
+      transform: rotateZ(45deg);
+    }
+
+    .custom-checkbox input[type="checkbox"]:checked+label:before {
+      border-color: #03A9F4;
+      background: #03A9F4;
+    }
+
+    .custom-checkbox input[type="checkbox"]:checked+label:after {
+      border-color: #fff;
+    }
+
+    .custom-checkbox input[type="checkbox"]:disabled+label:before {
+      color: #b8b8b8;
+      cursor: auto;
+      box-shadow: none;
+      background: #ddd;
+    }
+
+    .filterWrapper {
+      overflow: hidden;
+      padding: 0px;
+    }
+
+    /* Modal styles */
+
+    .modal {
+      color: #000;
+    }
+
+    .modal .modal-dialog {
+      /* max-width: 400px; */
+      width: 100%;
+      height: 100%;
+    }
+
+    .modal .modal-header,
+    .modal .modal-body,
+    .modal .modal-footer {
+      padding: 20px 30px;
+    }
+
+    .modal .modal-content {
+      border-radius: 3px;
+    }
+
+    .modal .modal-footer {
+      background: #ecf0f1;
+      border-radius: 0 0 3px 3px;
+    }
+
+    .modal .modal-title {
+      display: inline-block;
+    }
+
+    .modal .form-control {
+      border-radius: 2px;
+      box-shadow: none;
+      border-color: #dddddd;
+    }
+
+    .modal textarea.form-control {
+      resize: vertical;
+    }
+
+    .modal .btn {
+      border-radius: 2px;
+      min-width: 100px;
+    }
+
+    .modal form label {
+      font-weight: normal;
+    }
+  </style>
+
+  <style>
+    .table th {
+      background-color: #1c617b;
+      color: #fff;
+    }
+
+    .table tr:hover {
+      background-color: #1c617b;
+      color: #fff;
+    }
+  </style>
+
+
+  <style>
+    .table-wheels-tires {
+      font-size: 13px;
+      text-transform: uppercase;
+      margin: 1em 0;
+      min-width: 250px;
+      width: 100%;
+      border: 1px solid #333;
+    }
+
+    .table-wheels-tires tr {
+      border-top: 1px solid #f7f7f7;
+      border-bottom: 1px solid #f7f7f7;
+    }
+
+
+    .table-wheels-tires th {
+      display: none;
+    }
+
+    .table-wheels-tires td {
+      display: block;
+
+    }
+
+    .table-wheels-tires td:first-child {
+      padding-top: 0.5em;
+
+    }
+
+    .table-wheels-tires td:last-child {
+      padding-bottom: 0.5em;
+    }
+
+    .table-wheels-tires td:before {
+      content: attr(data-th) ": ";
+      font-weight: bold;
+      display: inline-block;
+      margin-right: 15px;
+
+    }
+
+    .table-wheels-tires {
+      background: #fff;
+      color: #000;
+      border: 1px solid #46637f;
+    }
+
+    .table-wheels-tires tr {
+      border-color: #999;
+    }
+
+    .table-wheels-tires th,
+    .table-wheels-tires td {
+      margin: 0.5em 1em;
+    }
+
+    .table-wheels-tires th,
+    .table-wheels-tires td:before {
+      width: auto;
+      min-width: 90px;
+    }
+
+    .table-header th {
+      background-color: #46637f;
+      color: #fff;
+    }
+
+    .table-wheels-tires>tbody>tr>td:first-of-type {
+      font-weight: 700;
+    }
+
+    .table-wheels-tires-header {
+      font-size: 14px;
+    }
+
+    .table-wheels-tires tr>th {
+      background-color: #46637f;
+      color: white;
+    }
+
+    .table-wheels-tires th,
+    .table-wheels-tires td {
+      text-align: left;
+    }
+
+    @media (min-width: 480px) {
+
+
+      .table-wheels-tires th,
+      .table-wheels-tires td {
+        display: table-cell;
+        padding: 0.25em 0.5em;
+      }
+
+      .table-wheels-tires th:first-child,
+      .table-wheels-tires td:first-child {
+        padding-left: 0;
+      }
+
+      .table-wheels-tires th:last-child,
+      .table-wheels-tires td:last-child {
+        padding-right: 0;
+      }
+
+    }
+
+    @media (min-width:480px) {
+
+      .table-wheels-tires th,
+      .table-wheels-tires td {
+        padding: 1em !important;
+        border: 1px solid #ccc;
+      }
+
+      .table-wheels-tires th,
+      .table-wheels-tires td:before {
+        padding-right: 15px;
+      }
+
+
+    }
+
+    @media (max-width: 400px) {
+      .table-wheels-tires th {
+        background-color: #f7f7f7;
+      }
+    }
+
+    @media (min-width: 480px) {
+      .table-wheels-tires td:before {
+        display: none;
+      }
+
+    }
+
+    .table-wheels-tires tr>td {
+      padding: 0;
+    }
+  </style>
+  <style>
+    table,
+    .rwd-table {
+      margin: 1em 0;
+      min-width: 250px;
+      width: 100%;
+      border: 1px solid #333;
+    }
+
+    .rwd-table tr {
+      border-top: 1px solid #f7f7f7;
+      border-bottom: 1px solid #f7f7f7;
+
+    }
+
+    .rwd-table tr:nth-child(even) {
+      background-color: #f7f7f7;
+    }
+
+    .rwd-table th {
+      display: none;
+    }
+
+    .rwd-table td {
+      display: block;
+
+    }
+
+    .rwd-table td:first-child {
+      padding-top: 0.5em;
+
+    }
+
+    .rwd-table td:last-child {
+      padding-bottom: 0.5em;
+    }
+
+    .rwd-table td:before {
+      content: attr(data-th) ": ";
+      font-weight: bold;
+      display: inline-block;
+      margin-right: 15px;
+
+    }
+
+    .rwd-table {
+      background: #fff;
+      color: #000;
+      /*overflow: hidden;*/
+      border: 1px solid #46637f;
+    }
+
+    .rwd-table tr {
+      border-color: #999;
+    }
+
+    .rwd-table th,
+    .rwd-table td {
+      margin: 0.5em 1em;
+
+    }
+
+    .rwd-table th,
+    .rwd-table td:before {
+      width: auto;
+    }
+
+    .table-header th {
+      background-color: #46637f;
+      color: #fff;
+    }
+
+
+
+
+    .rwd-table>tbody>tr>td:first-of-type {
+      font-weight: 700;
+    }
+
+    .rwd-table-header {
+      font-size: 14px;
+    }
+
+    .rwd-table tr>th {
+      background-color: #46637f;
+      color: white;
+      /*max-width: 100%;*/
+      /*white-space: nowrap;*/
+    }
+
+    .rwd-table th,
+    .rwd-table td {
+      text-align: left;
+    }
+
+    @media (min-width: 480px) {
+
+      .rwd-table th,
+      .rwd-table td {
+        display: table-cell;
+        padding: 0.25em 0.5em;
+      }
+
+      .rwd-table th:first-child,
+      .rwd-table td:first-child {
+        padding-left: 0;
+      }
+
+      .rwd-table th:last-child,
+      .rwd-table td:last-child {
+        padding-right: 0;
+      }
+    }
+
+    @media (min-width:480px) {
+
+      .rwd-table th,
+      .rwd-table td {
+        padding: 1em !important;
+        border: 1px solid #ccc;
+      }
+
+      .rwd-table th,
+      .rwd-table td:before {
+        padding-right: 15px;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .rwd-table th {
+        background-color: #f7f7f7;
+      }
+    }
+
+    @media (min-width: 480px) {
+      .rwd-table td:before {
+        display: none;
+      }
+    }
+  </style>
+
+  <style>
+    /* Filter CSS */
+    * {
+      box-sizing: border-box;
+    }
+
+
+    .dropdown {
+      position: relative;
+      font-size: 14px;
+      color: #333;
+      z-index: 10;
+      width: 50%;
+    }
+
+    .dropdown-list {
+
+      /* margin: 20px,30px; */
+      margin-top: 20px;
+      margin-bottom: 20px;
+      margin-left: 28px;
+      margin-right: 28px;
+      border-radius: 4px;
+
+    }
+
+    .dropdown .dropdown-list {
+      padding: 12px;
+      background: #fff;
+      position: absolute;
+      top: 30px;
+      left: 2px;
+      right: 2px;
+      box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.15);
+      transform-origin: 50% 0;
+      transform: scale(1, 0);
+      transition: transform 0.15s ease-in-out 0.15s;
+      max-height: 66vh;
+      overflow-y: scroll;
+    }
+
+    .dropdown .dropdown-option {
+      display: block;
+      padding: 8px 12px;
+      opacity: 0;
+      transition: opacity 0.15s ease-in-out;
+      color: black;
+    }
+
+    .dropdown .dropdown-list a {
+      text-decoration: none;
+      color: #1c617b;
+    }
+
+    .dropdown .dropdown-label {
+      display: block;
+      height: 30px;
+      background: #fff;
+      border: 1px solid #ccc;
+      padding: 6px 12px;
+      line-height: 1;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .dropdown .dropdown-label:before {
+      content: '▼';
+      float: right;
+    }
+
+    .dropdown.on .dropdown-list {
+      transform: scale(1, 1);
+      transition-delay: 0s;
+    }
+
+    .dropdown.on .dropdown-list .dropdown-option {
+      opacity: 1;
+      transition-delay: 0.2s;
+    }
+
+    .dropdown.on .dropdown-label:before {
+      content: '▲';
+    }
+
+    .dropdown [type="checkbox"] {
+      position: relative;
+      top: -1px;
+      margin-right: 4px;
+    }
+
+
+    .statusDiv {
+      display: inline-block;
+    }
+
+    .userFilterDiv {
+      display: inline-block;
+      float: right;
+    }
+
+    @media (max-width: 480px) {
+
+      .dropdown {
+        width: 100%;
+      }
+
+      .statusDiv {
+        display: block;
+        margin-bottom: 2px;
+      }
+
+      .userFilterDiv {
+        display: block;
+        float: none;
+      }
+    }
+  </style>
+
+
+</head>
+
+<body onload="getLeads()">
+
+  <main id="container" class="main">
+    <a id="logo" href="../">
+      <img class="top-image" src="../own+menu+logo-removebg-preview.png"
+        style="line-height: 1;width: 250px; margin: 10px; text-align:center;" alt="Own Energy">
+    </a>
+    <div id="pgTitle">LEADS</div>
+    <div id="navBar" class="">
+
+
+      <a href="../views/leads" id="list">
+        <div class="nav-button">LEADS</div>
+      </a>
+      <a href="../views/leads" id="project">
+        <div class="nav-button">PROJECTS</div>
+      </a>
+
+
+      <% if (data.admin) {%>
+        <a href="../payments" id="payment">
+          <div class="nav-button">PAYMENTS</div>
+        </a>
+        <a href="../expenses" id="expenses">
+          <div class="nav-button">EXPENSES</div>
+        </a>
+        <% } %>
+
+          <% if (data.manager) {%>
+            <a href="../views/users" id="users">
+              <div class="nav-button">USERS</div>
+            </a>
+            <% } %>
+
+
+    </div>
+    <div id="main">
+      <div>
+        <div id="searchDiv" style=" justify-content: space-between;">
+          <input type="text" id="leadSearch" class="form-control" placeholder="Search..." oninput="getLeads()" style="">
+
+          <a href="../Form" class="btn btn-info" data-toggle="modal" id="addbtn">
+            <p style="display: inline-block;font-size: 1rem;vertical-align: middle;">NEW LEAD</p>
+          </a>
+        </div>
+
+        <!-- <div class="filterWrapper"> -->
+        <div id="filterDiv" class="dropdown statusDiv" data-control="checkbox-dropdown">
+          <label id="statusDropdown" class="dropdown-label">Select</label>
+          <div class="dropdown-list" id="dropdown-list">
+            <button class="btn btn-info" id="addbtn" onclick="getLeads()">
+              <p style="display: inline-block;font-size: 1rem;vertical-align: middle;">APPLY FILTER</p>
+            </button>
+            <% allApptOutcomes.forEach(apptOutcome => { %>
+              <label class="dropdown-option">
+                <input type="checkbox" name="dropdown-group" value="<%= apptOutcome.id %>">
+                <span>
+                  <%= apptOutcome.name %>
+                </span>
+              </label>
+
+              <% }) %>
+          </div>
+        </div>
+
+        <div id="filterDiv" class="dropdown userFilterDiv" data-control="checkbox-dropdown">
+          <label id="userDropdown" class="dropdown-label">Select</label>
+          <div class="dropdown-list" id="dropdown-list2">
+            <button class="btn btn-info" id="addbtn" onclick="getLeads()">
+              <p style="display: inline-block;font-size: 1rem;vertical-align: middle;">APPLY FILTER</p>
+            </button>
+            <% users.forEach(user=> { %>
+              <label class="dropdown-option">
+                <input type="checkbox" name="dropdown-group" value="<%= user.objectID %>">
+                <span>
+                  <%= user.name %>
+                </span>
+              </label>
+
+              <% }) %>
+          </div>
+        </div>
+        <!-- </div> -->
+
+
+
+
+      </div>
+
+
+      <div class="table-div">
+
+        <table id="dataTable" class="table table-wheels-tires">
+          <tbody id="leads-table">
+            <tr>
+              <th class="table-header">Customer Name</th>
+              <th class="table-header">Status</th>
+              <th class="table-header">Address</th>
+              <th class="table-header">Created By</th>
+              <th class="table-header">Date Created</th>
+              <th class="table-header">Appointment</th>
+              <th class="table-header lastCol">View</th>
+            </tr>
+
+            <tr>
+
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+
+    <!-- Add Modal HTML -->
+    <div id="addLeadModal" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form method="POST" action="/lead">
+
+            <div class="modal-header">
+              <h4 class="modal-title">Add Lead</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+
+            <div class="modal-body">
+
+              <div class="form-group">
+                <label>Name</label>
+                <input type="text" id="name" name="name" class="form-control" required>
+              </div>
+
+              <div class="form-group">
+                <label>Email</label>
+                <input type="text" id="email" name="email" class="form-control" required>
+              </div>
+
+              <!-- <div class="form-group"> -->
+              <!-- <label>Password</label> -->
+              <!-- <input type="text" id="password" name="password" class="form-control" required> -->
+              <!-- </div> -->
+
+              <div class="form-group">
+                <label>CALId</label>
+                <input type="text" id="calId" name="calId" class="form-control" required>
+              </div>
+
+              <div class="form-group">
+                <label>Available</label>
+                <input type="text" id="available" name="available" class="form-control" required>
+              </div>
+
+
+              <div class="form-group">
+                <label>Location</label>
+                <input type="text" id="location" name="location" class="form-control">
+              </div>
+
+              <div class="form-group">
+                <label>Access Level</label>
+                <input type="text" id="accessLevel" name="accessLevel" class="form-control">
+              </div>
+
+            </div>
+            <div class="modal-footer">
+              <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+              <input type="submit" class="btn btn-success" value="Add">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Delete Modal HTML -->
+    <div id="deleteLeadModal" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form method="post" action="/lead">
+            <input type="hidden" name="method" value="delete" />
+            <input type="hidden" id="delLeadId" name="leadId" class="form-control" required>
+
+            <div class="modal-header">
+              <h4 class="modal-title">Delete Lead</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+              <p>Are you sure you want to delete this Record?</p>
+              <p class="text-warning"><small>This action cannot be undone.</small></p>
+            </div>
+            <div class="modal-footer">
+              <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+              <input type="submit" class="btn btn-danger" value="Delete">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+
+  </main>
+
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js'></script>
+  <script>
+
+    var modal = document.getElementById("myModal");
+    var btn = document.getElementById("myBtn");
+    var closeSpan = document.getElementsByClassName("close")[0];
+
+    btn.onclick = function () {
+      modal.style.display = "block";
+      modal.style.paddingLeft = "0px";
+    }
+
+    closeSpan.onclick = function () {
+      modal.style.display = "none";
+    }
+
+    function createLead() {
+      var projName = document.getElementById('leadName').value;
+      document.getElementById('submitProj').submit();
+    }
+
+
+  </script>
+
+  <script>
+    // $(document).ready(function () {
+    //   // Activate tooltip
+    //   $('[data-toggle="tooltip"]').tooltip();
+
+    //   // Select/Deselect checkboxes
+    //   var checkbox = $('table tbody input[type="checkbox"]');
+    //   $("#selectAll").click(function () {
+    //     if (this.checked) {
+    //       checkbox.each(function () {
+    //         this.checked = true;
+    //       });
+    //     } else {
+    //       checkbox.each(function () {
+    //         this.checked = false;
+    //       });
+    //     }
+    //   });
+    //   checkbox.click(function () {
+    //     if (!this.checked) {
+    //       $("#selectAll").prop("checked", false);
+    //     }
+    //   });
+
+
+    // });
+
+
+    function removeAllByClass(className) {
+      var classRows = document.getElementsByClassName(className);
+      console.log('remove called')
+
+      while (classRows.length > 0) {
+        classRows[0].parentNode.removeChild(classRows[0]);
+      }
+    }
+
+    var reqId = 0;
+
+    function getLeads() {
+
+      // array of appointOutcomes (their id) which the user wants to filter on
+      var statusFiltersToApply = [], userFiltersToApply = [];
+      $('#dropdown-list input:checked').each(function () {
+        statusFiltersToApply.push($(this).attr('value'));
+      });
+
+      $('#dropdown-list2 input:checked').each(function () {
+        userFiltersToApply.push($(this).attr('value'));
+      });
+
+      var leadInput = document.getElementById('leadSearch');
+      console.log(statusFiltersToApply)
+      var counter = 0;
+
+      $.ajax({
+        url: "/leads",
+        type: "get",
+        dataType: 'json',
+        // data: { "leadInput": leadInput.value },
+        data: {
+          "statusFilters": statusFiltersToApply,
+          "userFilters": userFiltersToApply,
+          "leadInput": leadInput.value,
+          "reqId": ++reqId
+        },
+        success: function (data, status, xhr) {
+          console.log(data.reqId, " Returns");
+          if (data.reqId == reqId) {
+
+            //$('#dropdown-list li').remove();
+            removeAllByClass('dataRow');
+            var table = document.getElementById("dataTable");
+            var rowCounter = 1;
+            let hits = data.hits
+            for (index in hits) {
+
+              counter++;
+              // console.log('counter = ' + counter)
+              // console.log(hits[index])
+              var row = table.insertRow(rowCounter++);
+              row.classList.add('dataRow');
+
+              var nameCell = row.insertCell();
+              var addressCell = row.insertCell();
+              var dateCreatedCell = row.insertCell();
+              var apptCell = row.insertCell();
+              var actionsCell = row.insertCell();
+              const weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+              const monthNames = ["JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE", "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER"];
+
+              html = '<td data-th="Customer Name">' + hits[index].firstName + ' ' + hits[index].lastName + '</td>';
+              html += '<td data-th="Status">';
+              for (let i = 0; i < data.allApptOutcomes.length; i++) {
+                if (data.allApptOutcomes[i].id == hits[index].status) {
+                  html += data.allApptOutcomes[i].name
+                }
+              }
+              html += '</td>'
+
+
+              // html += '<td data-th="Status">' + '<form method="POST" action="">' + '<select>';
+
+              // for (let i = 0; i < data[index].allApptOutcomes.length; i++) {
+              //   if(data[index].allApptOutcomes[i].id == data[index].status){
+              //     html += '<option selected>' + data[index].allApptOutcomes[i].name + '</option>'
+              //   }else{
+              //     html += '<option>' + data[index].allApptOutcomes[i].name + '</option>'
+              //   }
+              // }
+
+              // html += '</select>' + '<input type="submit" name="submit">' + '</form>' +'</td>';
+
+
+              html += '<td data-th="Address">' + hits[index].street + ' ' + hits[index].city + ', ' + hits[index].state + ' ' + hits[index].zip + '</td>';
+              html += '<td data-th="Created By">' + hits[index].setter.name + '</td>';
+              html += '<td data-th="Date Created">' + weekday[(new Date(hits[index].dateCreated)).getDay()].substring(0, 3) + ', ' + (new Date(hits[index].dateCreated)).getDate()
+                + ' ' + monthNames[(new Date(hits[index].dateCreated)).getMonth()]
+                + ' ' + (new Date(hits[index].dateCreated)).getUTCFullYear() + '</td>';
+              html += '<td data-th="Appointment">' + hits[index].appointmentTime + '</td>';
+              html += '<td data-th="View"><a  class="lastCol"  href="../views/lead?lId=' + hits[index].objectID + '\"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a></td>';
+
+              // nameCell.innerHTML = '<td data-th="Customer Name">' + data[index].firstName + ' ' + data[index].lastName + '</td>'; 
+              // console.log(name.innerHTML);
+              // console.log(name.actionHTML);
+              // addressCell.innerHTML = '<td data-th="Address">' + data[index].street + ' ' + data[index].city + ', ' + data[index].state + ' ' + data[index].zip + '</td>'; 
+              // dateCreatedCell.innerHTML = '<td data-th="Date Created">' + data[index].dateCreated + '</td>'; 
+              // apptCell.innerHTML = '<td data-th="Appointment">' + data[index].appointmentTime + '</td>'; 
+
+              // let actionHTML = '<td data-th="View"><a  class="lastCol"  href="../views/lead?lId=' + data[index].objectID + '\"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a></td>'
+              // actionsCell.innerHTML = actionHTML;
+
+              row.innerHTML = html;
+            }
+
+          }
+        },
+        error: function (jqXhr, textStatus, errorMessage) {
+          console.log(errorMessage);
+        }
+      });
+    }
+
+
+    function getSetterName(setterId) {
+
+      $.ajax({
+        url: "/user",
+        type: "get",
+        dataType: 'json',
+        data: { "userId": setterId },
+
+        success: function (data, status, xhr) {
+          console.log(data.name)
+          return (data.name)
+
+        },
+        error: function (jqXhr, textStatus, errorMessage) {
+          console.log(errorMessage);
+        }
+      });
+
+    }
+
+    function deleteLead(leadId) {
+      $('#delLeadId').val(leadId);
+    }
+
+  </script>
+
+  <script>
+    // Filter function
+    (function ($) {
+      var CheckboxDropdown = function (el) {
+        var _this = this;
+        this.isOpen = false;
+        this.areAllChecked = false;
+        this.$el = $(el);
+        // console.log(this.$el)
+        // this.$label = this.$el.find('.dropdown-label');
+        this.$label = this.$el.find('#statusDropdown');
+        this.$label2 = this.$el.find('#userDropdown');
+        this.$checkAll = this.$el.find('[data-toggle="check-all"]').first();
+        this.$inputs = this.$el.find('[type="checkbox"]');
+
+        this.onCheckBox();
+        // this.onCheckAll(); // checks all by default
+
+        this.$label.on('click', function (e) {
+          e.preventDefault();
+          _this.toggleOpen();
+        });
+
+        this.$label2.on('click', function (e) {
+          e.preventDefault();
+          _this.toggleOpen();
+        });
+
+        this.$checkAll.on('click', function (e) {
+          e.preventDefault();
+          _this.onCheckAll();
+        });
+
+        this.$inputs.on('change', function (e) {
+          _this.onCheckBox();
+        });
+      };
+
+      CheckboxDropdown.prototype.onCheckBox = function () {
+        this.updateStatus();
+      };
+
+      CheckboxDropdown.prototype.updateStatus = function () {
+        var checked = this.$el.find(':checked');
+        // console.log('checked= ' + checked.length)
+        // console.log(this.$el)
+
+        this.areAllChecked = false;
+        this.$checkAll.html('Check All');
+
+        if (checked.length <= 0) {
+          this.$label.html('Select Statuses');
+          this.$label2.html('Select Reps');
+          // this.$label.html(checked.length);
+          // console.log('<=0')
+        }
+        else if (checked.length === 1) {
+          this.$label.html(checked.parent('label').text());
+          this.$label2.html(checked.parent('label').text());
+          // this.$label.html('==1');
+          // console.log('==1')
+        }
+        else if (checked.length === this.$inputs.length) {
+          this.$label.html('All Selected');
+          this.$label2.html('All Selected');
+
+          // this.$label.html('>=1');
+          this.areAllChecked = true;
+          this.$checkAll.html('Uncheck All');
+          // console.log('>=1')
+        }
+        else {
+          this.$label.html(checked.length + ' Selected');
+          this.$label2.html(checked.length + ' Selected');
+          // this.$label.html('===');
+          // console.log('===')
+        }
+      };
+
+      CheckboxDropdown.prototype.onCheckAll = function (checkAll) {
+        if (!this.areAllChecked || checkAll) {
+          this.areAllChecked = true;
+          this.$checkAll.html('Uncheck All');
+          this.$inputs.prop('checked', true);
+        }
+        else {
+          this.areAllChecked = false;
+          this.$checkAll.html('Check All');
+          this.$inputs.prop('checked', false);
+        }
+
+        this.updateStatus();
+      };
+
+      CheckboxDropdown.prototype.toggleOpen = function (forceOpen) {
+        var _this = this;
+
+        if (!this.isOpen || forceOpen) {
+          this.isOpen = true;
+          this.$el.addClass('on');
+          $(document).on('click', function (e) {
+            if (!$(e.target).closest('[data-control]').length) {
+              _this.toggleOpen();
+            }
+          });
+        }
+        else {
+          this.isOpen = false;
+          this.$el.removeClass('on');
+          $(document).off('click');
+        }
+      };
+
+      var checkboxesDropdowns = document.querySelectorAll('[data-control="checkbox-dropdown"]');
+      for (var i = 0; i < checkboxesDropdowns.length; i++) {
+        // console.log(i)
+        new CheckboxDropdown(checkboxesDropdowns[i]);
+      }
+    })(jQuery);
+  </script>
+</body>
+
+</html>

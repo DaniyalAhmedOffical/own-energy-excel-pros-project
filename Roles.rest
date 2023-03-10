@@ -1,0 +1,29 @@
+### - Creating Access Level (and updating AccessLevelAccess table)
+POST http://localhost:8080/api/createAccessLevel
+Content-Type: application/json
+
+{
+    "levelName": "Lowest",
+    "accessLevel": 4
+}
+
+### - Creating SubAccess Level (and updating AccessLevelAccess table)
+POST http://localhost:8080/api/createSubAccess
+Content-Type: application/json
+
+{
+    "accessId": "xVCnx6ah9pKiLY7Qx7ub",
+    "displayName": "Access Level",
+    "featureName": "EditAccessLevel",
+    "accessLevel": 4
+}
+
+### - Creating Access
+POST http://localhost:8080/api/createAccess
+Content-Type: application/json
+
+{
+    "category": "User",
+    "displayName": "Edit",
+    "keyword": "editUser"
+}

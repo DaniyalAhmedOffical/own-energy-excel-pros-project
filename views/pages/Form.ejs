@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0" />
+  <base target="_top">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <!-- <link rel="stylesheet" href="https://drive.google.com/uc?export=view&id=1__noaYifc3prBiga9d40Qe7h2eOBlHzd"> -->
+  <title>Appointment Form</title>
+  <style>
+    @supports (animation: grow .5s cubic-bezier(.25, .25, .25, 1) forwards) {
+      .tick {
+        stroke-opacity: 0;
+        stroke-dasharray: 29px;
+        stroke-dashoffset: 29px;
+        animation: draw .5s cubic-bezier(.25, .25, .25, 1) forwards;
+        animation-delay: .6s
+      }
+
+      .circle {
+        fill-opacity: 0;
+        stroke: #0A4069;
+        stroke-width: 16px;
+        transform-origin: center;
+        transform: scale(0);
+        animation: grow 1s cubic-bezier(.25, .25, .25, 1.25) forwards;
+      }
+    }
+
+    @keyframes grow {
+      60% {
+        transform: scale(.8);
+        stroke-width: 4px;
+        fill-opacity: 0;
+      }
+
+      100% {
+        transform: scale(.9);
+        stroke-width: 8px;
+        fill-opacity: 1;
+        fill: #0A4069;
+      }
+    }
+
+    @keyframes draw {
+
+      0%,
+      100% {
+        stroke-opacity: 1;
+      }
+
+      100% {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    /*  Styles */
+    :root {
+      --theme-color: var(--color-purple);
+    }
+
+
+    /*custom font*/
+    @import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+    /*basic reset*/
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      height: 120%;
+      /*Image only BG fallback*/
+      /*background = gradient + image pattern combo*/
+      /* background: linear-gradient(rgba(255, 255, 255, 0.6), rgba(0, 0, 0, 0.6)); */
+      /* background: linear-gradient(#ffffff, #2A2829); */
+    }
+
+    body {
+      font-family: montserrat, arial, verdana;
+      height: 78%;
+    }
+
+    @media screen and (max-width: 900px) {
+      body {
+        background-image: url('./lead\ input\ form.png');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+        background-size: cover;
+      }
+
+      #msform fieldset {
+        width: 80%;
+      }
+
+      #msform .action-button {
+        width: 80%;
+      }
+    }
+
+    @media screen and (min-width: 900px) {
+      body {
+        background-image: url('./bgDesktop.png');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+        background-size: cover;
+
+      }
+
+      #msform fieldset {
+        width: 50%;
+      }
+
+      #msform .action-button {
+        width: 43%;
+      }
+
+    }
+
+    /*form styles*/
+    .form-title {
+      width: 100%;
+      margin: 50px auto 0 auto;
+      text-align: center;
+      position: relative;
+    }
+
+
+    #msform {
+      width: 100%;
+      max-width: 800px;
+      margin: 50px auto;
+      text-align: center;
+      position: relative;
+    }
+
+    @media screen and (max-width: 100px) {
+      #msform {
+        width: 20%;
+      }
+    }
+
+
+    #msform fieldset {
+      background: #131F28;
+      border: 0 none;
+      border-radius: 3px;
+      box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+      padding: 20px 30px;
+      box-sizing: border-box;
+      width: 80%;
+      margin: 0 10%;
+      /*stacking fieldsets above each other*/
+      position: relative;
+    }
+
+    /*Hide all except first fieldset*/
+    #msform fieldset:not(:first-of-type) {
+      display: none;
+    }
+
+    /*inputs*/
+    #msform input,
+    #msform select,
+    #msform textarea,
+    #msform a {
+      padding: 15px;
+      border-radius: 3px;
+      margin-bottom: 10px;
+      width: 100%;
+      box-sizing: border-box;
+      font-family: montserrat, arial, verdana;
+      color: #2C3E50;
+      font-size: 20px;
+    }
+
+    #msform input,
+    #msform select,
+    #msform textarea {
+      border: 1px solid #ccc;
+    }
+
+    /*buttons*/
+    #msform .action-button {
+      width: 100px;
+      background: #0A4069;
+      font-size: 18px;
+      color: white;
+      border: 0 none;
+      border-radius: 10px;
+
+      cursor: pointer;
+      padding: 10px 5px;
+      margin: 10px 5px;
+    }
+
+    #msform .action-button:hover,
+    #msform .action-button:focus {
+      box-shadow: 0 0 0 2px white, 0 0 0 3px #0A4069;
+    }
+
+    #msform .fileUp-Button:hover,
+    #msform .fileUp-Button:focus {
+      box-shadow: 0 0 0 2px white, 0 0 0 3px #0A4069;
+    }
+
+    /*headings*/
+    .fs-title {
+      font-size: 1.7em;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 0.5em;
+    }
+
+    .fs-subtitle {
+      font-weight: normal;
+      font-size: 0.9em;
+      color: rgb(175, 175, 175);
+      margin-bottom: 1em;
+    }
+
+    /*progressbar*/
+    #progressbar {
+      text-align: center;
+      margin-bottom: 30px;
+      overflow: hidden;
+      /*CSS counters to number the steps*/
+      counter-reset: step;
+    }
+
+    #progressbar li {
+      list-style-type: none;
+      color: #fff;
+      text-transform: uppercase;
+      font-size: 11px;
+      width: 33.33%;
+      float: left;
+      position: relative;
+    }
+
+    #progressbar li:before {
+      content: counter(step);
+      counter-increment: step;
+      width: 20px;
+      line-height: 20px;
+      display: block;
+      font-size: 10px;
+      color: #333;
+      background: white;
+      border-radius: 10px;
+      margin: 0 auto 5px auto;
+    }
+
+    /*progressbar connectors*/
+    #progressbar li:after {
+      content: '';
+      width: 100%;
+      height: 2px;
+      background: white;
+      position: absolute;
+      left: -50%;
+      top: 9px;
+      z-index: -1;
+      /*put it behind the numbers*/
+    }
+
+    #progressbar li:first-child:after {
+      /*connector not needed before the first step*/
+      content: none;
+    }
+
+    /*marking active/completed steps green*/
+    /*The number of the step and the connector before it = green*/
+    #progressbar li.active:before,
+    #progressbar li.active:after {
+      background: #0A4069;
+      color: white;
+    }
+
+    svg {
+      margin-bottom: 4px;
+    }
+
+    .loader {
+      margin: 0 0 2em;
+      height: 100px;
+      width: 20%;
+      text-align: center;
+      padding: 1em;
+      margin: 0 auto 1em;
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    /*
+        Set the color of the icon
+      */
+    #loader-1 path,
+    #loader-1 rect {
+      fill: #0A4069;
+    }
+
+    /* The Modal (background) */
+    .modal {
+      display: none;
+      /* Hidden by default */
+      position: fixed;
+      /* Stay in place */
+      z-index: 1;
+      /* Sit on top */
+      padding-top: 100px;
+      /* Location of the box */
+      left: 0;
+      top: 0;
+      width: 100%;
+      /* Full width */
+      height: 100%;
+      /* Full height */
+      overflow: auto;
+      /* Enable scroll if needed */
+      background-color: rgb(0, 0, 0);
+      /* Fallback color */
+      background-color: rgba(0, 0, 0, 0.4);
+      /* Black w/ opacity */
+      border-radius: 3px;
+    }
+
+    /* Modal Content */
+    .modal-content {
+      background-color: #fefefe;
+      margin: auto;
+      padding: 30px;
+      border: 1px solid #888;
+      width: 80%;
+    }
+
+    /* The Close Button */
+    .close {
+      color: #aaaaaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body onload="StartUp()">
+  <form method="POST" id="msform" onsubmit="completeSub()" enctype="multipart/form-data">
+    <a href="./">
+      <!-- <img class="top-image" src="https://drive.google.com/uc?export=download&id=1K7ccj0NSHRiObSpBYYTkMW_mdc5vOndo"
+        style="line-height: 1;width: 250px; margin: 10px; text-align:center;" alt="Own Energy"> -->
+      <img class="top-image" src="./own+menu+logo-removebg-preview.png" style="line-height: 1;width: 250px; margin: 10px; text-align:center;"  alt="Own Energy">
+    </a>
+    <!-- progressbar -->
+    <ul id="progressbar">
+      <li class="active">Homeowner</li>
+      <li>Additional Information</li>
+      <li>Final</li>
+    </ul>
+
+    <fieldset>
+      <h2 class="fs-title">NEW LEAD SUBMISSION</h2>
+      <h3 class="fs-subtitle">Input Homeowner Information</h3>
+      <input id="00N8c00000T5HLm" maxlength="255" name="00N8c00000T5HLm" size="20" type="hidden" placeholder="Rep Name"
+        value="" disabled /><br> <!-- Rep Name -->
+
+      <input id="first_name" maxlength="40" name="first_name" size="20" type="text" placeholder="First Name" /><br>
+      <input id="last_name" maxlength="80" name="last_name" size="20" type="text" placeholder="Last Name" /><br>
+      <input id="phone" maxlength="40" name="phone" size="20" type="text" placeholder="Phone" /><br>
+      <input id="email" maxlength="80" name="email" size="20" type="text" placeholder="Email" /><br>
+
+
+      <input id="street" name="street" placeholder="Street Address" /><br>
+      <input id="city" maxlength="40" name="city" size="20" type="text" placeholder="City" /><br>
+      <input id="state" maxlength="20" name="state" size="20" type="text" placeholder="State" /><br>
+      <input id="zip" maxlength="20" name="zip" size="20" type="text" placeholder="Zip Code" /><br>
+
+      <input type="button" name="next" class="next action-button" id="next1" value="Next" />
+    </fieldset>
+    <fieldset>
+      <input type="button" class="fileUp-Button" id="picUpload" value="Upload Utility Bill" />
+      <div class="svg-container" id="checkMark" style="display:none;">
+        <svg class="ft-green-tick" xmlns="http://www.w3.org/2000/svg" height="60" width="60" viewBox="0 0 48 48"
+          aria-hidden="true">
+          <circle class="circle" fill="#5bb543" cx="24" cy="24" r="22" />
+          <path class="tick" fill="none" stroke="#FFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"
+            stroke-miterlimit="10" d="M14 27l5.917 4.917L34 17" />
+        </svg>
+      </div>
+      <input id="utilPic" name="file" type="file" style="display: none;" />
+
+      <input id="00N8c00000aUPW7" maxlength="255" name="00N8c00000aUPW7" type="hidden" placeholder="Appointment"
+        value="somethinbg" /><br> <!-- Appointment -->
+
+      <input id="kwhConsumption" maxlength="40" name="kwhConsumption" size="20" type="text"
+        placeholder="kWh Consumption" /><br> <!-- Annual kWh Consumption -->
+      <textarea id="notes" name="notes" rows="5" type="text" wrap="soft" placeholder="Notes"
+        style="resize: vertical;"></textarea><br> <!-- Notes -->
+
+
+
+      <input type="button" name="previous" class="previous action-button" value="Previous" />
+      <input type="button" name="next" class="next action-button" id="next2" value="Next" />
+
+    </fieldset>
+    <fieldset>
+      <select name="apptDay" id="apptDay" placeholder="Appointment Date" onchange="GetAppTimes()">
+        <option disabled selected value>Appointment Date</option>
+        <% const days=[ 'Sun' , 'Mon' , 'Tue' , 'Wed' , 'Thu' , 'Fri' , 'Sat' ]; const months=[ 'January' , 'February'
+          , 'March' , 'April' , 'May' , 'June' , 'July' , 'August' , 'September' , 'October' , 'November' , 'December'
+          ]; for (var i=0; i < 7; i++){ nextDay=new Date(Number((new Date()))); nextDay.setDate((new Date()).getDate() +
+          i); %>
+          <option value="<%= days[nextDay.getDay()] + ', ' + nextDay.getDate() + ' ' + months[nextDay.getMonth()] + ' ' +
+          nextDay.getFullYear() %>">
+            <%= days[nextDay.getDay()] + ', ' + nextDay.getDate() + ' ' + months[nextDay.getMonth()] + ' ' +
+              nextDay.getFullYear() %>
+          </option>
+          <% } %>
+
+
+      </select>
+
+      <select name="apptTime" id="apptTime" placeholder="Appointment Time" onchange="SetApptTime()">
+
+      </select>
+      <div class="loader loader--style2" title="1" style="display:none" id="loadCircle">
+        <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+          x="0px" y="0px" width="40px" height="40px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;"
+          xml:space="preserve">
+          <path fill="#000"
+            d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z">
+            <animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25"
+              dur="0.6s" repeatCount="indefinite" />
+          </path>
+        </svg>
+      </div>
+
+
+
+
+      <input type="button" name="previous" class="previous action-button" value="Previous" />
+      <input type="submit" name="submit" class="submit action-button" value="Submit" />
+    </fieldset>
+  </form>
+  <!-- The Modal -->
+  <div id="errorModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p id="errorMsg">Please fill out all feilds!</p>
+    </div>
+
+  </div>
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js'></script>
+  <script>
+    //jQuery time
+    var current_fs, next_fs, previous_fs; //fieldsets
+    var left, opacity, scale; //fieldset properties which we will animate
+    var animating; //flag to prevent quick multi-click glitches
+    var askedNotes = false;
+    var modal = document.getElementById("errorModal");
+    var msg = document.getElementById("errorMsg");
+    var span = document.getElementsByClassName("close")[0];
+
+    span.onclick = function () {
+      modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+
+    $(".next").click(function () {
+      if (animating) return false;
+
+      if ($(this).attr('id') == 'next1') {
+        var fName = document.getElementById('first_name').value;
+        var lName = document.getElementById('last_name').value;
+        var phone = document.getElementById('phone').value;
+        var street = document.getElementById('street').value;
+        var city = document.getElementById('city').value;
+        var state = document.getElementById('state').value;
+        var zip = document.getElementById('zip').value;
+        if (fName == '' || lName == '' || phone == '' || street == '' || city == '' || state == '' || zip == '') {
+          msg.innerHTML = "You must fill out the Homeowner's Information";
+          modal.style.display = "block";
+
+          return false;
+        }
+
+      }
+
+      if ($(this).attr('id') == 'next2') {
+        var utilBill = document.getElementById('utilPic').value;
+        var notes = document.getElementById('notes').value;
+
+        // TODO remove this after testing
+        if (utilBill == ''){
+          msg.innerHTML = "You must upload the Utility Bill";
+          modal.style.display = "block";
+          return false;
+        }
+        if (notes == '' && askedNotes == false) {
+          msg.innerHTML = "Are your sure there are no notes?";
+          modal.style.display = "block";
+          askedNotes = true;
+          return false;
+        }
+      }
+
+      animating = true;
+
+
+
+      current_fs = $(this).parent();
+      next_fs = $(this).parent().next();
+
+      //activate next step on progressbar using the index of next_fs
+      $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+
+      //show the next fieldset
+      next_fs.show();
+      //hide the current fieldset with style
+      current_fs.animate({ opacity: 0 }, {
+        step: function (now, mx) {
+          //as the opacity of current_fs reduces to 0 - stored in "now"
+          //1. scale current_fs down to 80%
+          scale = 1 - (1 - now) * 0.2;
+          //2. bring next_fs from the right(50%)
+          left = (now * 50) + "%";
+          //3. increase opacity of next_fs to 1 as it moves in
+          opacity = 1 - now;
+          current_fs.css({
+            'transform': 'scale(' + scale + ')',
+            'position': 'absolute'
+          });
+          next_fs.css({ 'left': left, 'opacity': opacity });
+        },
+        duration: 800,
+        complete: function () {
+          current_fs.hide();
+          animating = false;
+        },
+        //this comes from the custom easing plugin
+        easing: 'easeInOutBack'
+      });
+    });
+
+    $(".previous").click(function () {
+      if (animating) return false;
+      animating = true;
+      askedNotes = false;
+
+
+
+      current_fs = $(this).parent();
+      previous_fs = $(this).parent().prev();
+
+      //de-activate current step on progressbar
+      $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+
+      //show the previous fieldset
+      previous_fs.show();
+      //hide the current fieldset with style
+      current_fs.animate({ opacity: 0 }, {
+        step: function (now, mx) {
+          //as the opacity of current_fs reduces to 0 - stored in "now"
+          //1. scale previous_fs from 80% to 100%
+          scale = 0.8 + (1 - now) * 0.2;
+          //2. take current_fs to the right(50%) - from 0%
+          left = ((1 - now) * 50) + "%";
+          //3. increase opacity of previous_fs to 1 as it moves in
+          opacity = 1 - now;
+          current_fs.css({ 'left': left });
+          previous_fs.css({ 'transform': 'scale(' + scale + ')', 'opacity': opacity });
+        },
+        duration: 800,
+        complete: function () {
+          current_fs.hide();
+          animating = false;
+        },
+        //this comes from the custom easing plugin
+        easing: 'easeInOutBack'
+      });
+    });
+  </script>
+
+  <script src="https://www.gstatic.com/firebasejs/4.0.0/firebase.js"></script>
+  <script>
+
+    function StartUp() {
+      document.getElementById('apptTime').style.visibility = "hidden";
+    }
+
+
+    var firstNBtn = document.getElementById("next1");
+    firstNBtn.addEventListener("click", CheckFirstPageValidation);
+
+    function CheckFirstPageValidation() {
+
+    }
+    var uploadBtn = document.getElementById("picUpload");
+    uploadBtn.addEventListener("click", OpenFilePicker);
+    var fileBox = document.getElementById("utilPic");
+
+
+    function OpenFilePicker() {
+      fileBox.click();
+    }
+
+    fileBox.addEventListener("change", UploadToGoogleDrive);
+    var file, reader = new FileReader();
+
+    function UploadToGoogleDrive() {
+      file = $('#utilPic')[0].files[0];
+      reader.readAsDataURL(file);
+    }
+
+    // Upload the file to Google Drive
+    reader.onloadend = function (e) {
+      document.getElementById("picUpload").style.display = 'none';
+      document.getElementById('checkMark').style.display = 'block';
+    };
+
+
+    function completeSub() {
+      // TODO remove this after testing
+      
+      if (selectAppt.value == '' || selectAppt.value == 'Appointment Time'){
+        var modal = document.getElementById("errorModal");
+        var msg = document.getElementById("errorMsg");
+        msg.innerHTML = 'Please select an Appointment Time!';
+        modal.style.display = "block";
+        event.preventDefault();  
+        return false;
+      }
+
+
+      /*
+      var select = document.getElementById('apptDay');
+      var selectAppt = document.getElementById('apptTime');
+      var dateTime = select.options[select.selectedIndex].text + ' ';
+      dateTime += selectAppt.options[selectAppt.selectedIndex].value;
+      */
+     
+    }
+
+
+
+    function GetAppTimes() {
+      document.getElementById('apptTime').style.display = "none";
+      document.getElementById('loadCircle').style.display = "block";
+
+      var selectedDate = document.getElementById('apptDay').value;
+      
+      $.ajax({
+                url: "/api/getApptTimes",
+                type: "get",
+                dataType: 'json',
+                data: { "selectedDate": selectedDate },
+
+                success: function (data, status, xhr) {
+                    SetAppTimes(data);
+                },
+                error: function (jqXhr, textStatus, errorMessage) {
+                    console.log(data.paymentId);
+                    console.log(errorMessage);
+                }
+            });
+      
+    }
+
+    function SetAppTimes(times) {
+      document.getElementById('apptTime').style.visibility = "visible";
+      document.getElementById('apptTime').style.display = "block";
+      document.getElementById('loadCircle').style.display = "none";
+
+      var select = document.getElementById('apptTime');
+      select.innerHTML = '';
+      var opt = document.createElement('option');
+      opt.innerHTML = 'Appointment Time';
+      select.appendChild(opt);
+
+      for (var i = 0; i < times.length; i++) {
+        opt = document.createElement('option');
+        opt.value = times[i];
+        opt.innerHTML = times[i];
+        select.appendChild(opt);
+      }
+    }
+
+    function SetApptTime() {
+      var select = document.getElementById('apptDay');
+      var dateTime = select.options[select.selectedIndex].text;
+      dateTime += ' ';
+      select = document.getElementById('apptTime');
+      dateTime += select.options[select.selectedIndex].value;
+      document.getElementById('00N8c00000aUPW7').value = dateTime;
+    }
+
+      //Remaing Code Goes Here
+  </script>
+</body>
+
+</html>

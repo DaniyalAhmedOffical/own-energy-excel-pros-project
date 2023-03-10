@@ -1,0 +1,43 @@
+Cleaned Up List:
+Password Validation
+   SVG
+Email Validation
+   Legitimate
+   Check for Duplicate
+Backend CalId and .post(/Users) Validation
+   If calid is populated -> hasCalid is saved as true
+   Available
+Hash Delete Email (Send on Expired Load)
+View Lead Icon
+PW Setup Email button to be smaller
+Managers to See Users
+Util Bill
+   in Email & View
+Closer Logic
+Admin Notifs on User Creation
+Leads Access
+Appointment Outcomes
+  Lead Statuses
+    - New
+    - Missed Appointment > Follow Up List 
+    - Met > Sit Pay & Convert to Project 
+    Disqualify
+  Lead List Filters
+Payroll
+   Sit Pay
+   Commission
+      Per Project
+      Monthly
+Project Conversion 
+Rescheduling
+   SalesRabbit
+Location Based Calendars - Maybe Working
+Daily Emails   
+   - Appointments of the Days > Closers
+Backup - Data gets Dumped to Google Sheet
+Titan - OWN Intgration
+   PPIN - Our Unique ID for specifc project
+Second Page Lead Form Validation
+		Utility Bill - Mandatory (Fix after Upload Fix)
+Refactor App.js
+Implement React Table

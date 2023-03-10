@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0" />
+  <base target="_top">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+  <!-- <link rel="stylesheet" href="https://drive.google.com/uc?export=view&id=1__noaYifc3prBiga9d40Qe7h2eOBlHzd"> -->
+  <title>New User Form</title>
+  <style>
+    @supports (animation: grow .5s cubic-bezier(.25, .25, .25, 1) forwards) {
+      .tick {
+        stroke-opacity: 0;
+        stroke-dasharray: 29px;
+        stroke-dashoffset: 29px;
+        animation: draw .5s cubic-bezier(.25, .25, .25, 1) forwards;
+        animation-delay: .6s
+      }
+
+      .circle {
+        fill-opacity: 0;
+        stroke: #0A4069;
+        stroke-width: 16px;
+        transform-origin: center;
+        transform: scale(0);
+        animation: grow 1s cubic-bezier(.25, .25, .25, 1.25) forwards;
+      }
+    }
+
+    @keyframes grow {
+      60% {
+        transform: scale(.8);
+        stroke-width: 4px;
+        fill-opacity: 0;
+      }
+
+      100% {
+        transform: scale(.9);
+        stroke-width: 8px;
+        fill-opacity: 1;
+        fill: #0A4069;
+      }
+    }
+
+    @keyframes draw {
+
+      0%,
+      100% {
+        stroke-opacity: 1;
+      }
+
+      100% {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    /*  Styles */
+    :root {
+      --theme-color: var(--color-purple);
+    }
+
+
+    /*custom font*/
+    @import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+    /*basic reset*/
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      height: 120%;
+      /*Image only BG fallback*/
+      /*background = gradient + image pattern combo*/
+      /* background: linear-gradient(rgba(255, 255, 255, 0.6), rgba(0, 0, 0, 0.6)); */
+      /* background: linear-gradient(#ffffff, #2A2829); */
+    }
+
+    body {
+      font-family: montserrat, arial, verdana;
+      height: 78%;
+    }
+
+    @media screen and (max-width: 900px) {
+      body {
+        background-image: url('../lead\ input\ form.png');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+        background-size: cover;
+      }
+
+      #msform fieldset {
+        width: 80%;
+      }
+
+      #msform .action-button {
+        width: 80%;
+      }
+    }
+
+    @media screen and (min-width: 900px) {
+      body {
+        background-image: url('../bgDesktop.png');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+        background-size: cover;
+
+      }
+
+      #msform fieldset {
+        width: 50%;
+      }
+
+      #msform .action-button {
+        width: 43%;
+      }
+
+    }
+
+    /*form styles*/
+    .form-title {
+      width: 100%;
+      margin: 50px auto 0 auto;
+      text-align: center;
+      position: relative;
+    }
+
+
+    #msform {
+      width: 100%;
+      max-width: 800px;
+      margin: 50px auto;
+      text-align: center;
+      position: relative;
+    }
+
+    @media screen and (max-width: 100px) {
+      #msform {
+        width: 20%;
+      }
+    }
+
+
+    #msform fieldset {
+      background: #131F28;
+      border: 0 none;
+      border-radius: 3px;
+      box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+      padding: 20px 30px;
+      box-sizing: border-box;
+      width: 80%;
+      margin: 0 10%;
+      /*stacking fieldsets above each other*/
+      position: relative;
+    }
+
+    /*Hide all except first fieldset*/
+    #msform fieldset:not(:first-of-type) {
+      display: none;
+    }
+
+    /*inputs*/
+    #msform input,
+    #msform select,
+    #msform textarea,
+    #msform a {
+      padding: 15px;
+      border-radius: 3px;
+      margin-bottom: 10px;
+      width: 100%;
+      box-sizing: border-box;
+      font-family: montserrat, arial, verdana;
+      color: #2C3E50;
+      font-size: 20px;
+    }
+
+    #msform input,
+    #msform select,
+    #msform textarea {
+      border: 1px solid #ccc;
+    }
+
+    /*buttons*/
+    #msform .action-button {
+      width: 100px;
+      background: #0A4069;
+      font-size: 18px;
+      color: white;
+      border: 0 none;
+      border-radius: 10px;
+
+      cursor: pointer;
+      padding: 10px 5px;
+      margin: 10px 5px;
+    }
+
+    #msform .action-button:hover,
+    #msform .action-button:focus {
+      box-shadow: 0 0 0 2px white, 0 0 0 3px #0A4069;
+    }
+
+    #msform .fileUp-Button:hover,
+    #msform .fileUp-Button:focus {
+      box-shadow: 0 0 0 2px white, 0 0 0 3px #0A4069;
+    }
+
+    /*headings*/
+    .fs-title {
+      font-size: 1.7em;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 0.5em;
+    }
+
+    .fs-subtitle {
+      font-weight: normal;
+      font-size: 0.9em;
+      color: rgb(175, 175, 175);
+      margin-bottom: 1em;
+    }
+
+    /*progressbar*/
+    #progressbar {
+      text-align: center;
+      margin-bottom: 30px;
+      overflow: hidden;
+      /*CSS counters to number the steps*/
+      counter-reset: step;
+    }
+
+    #progressbar li {
+      list-style-type: none;
+      color: #fff;
+      text-transform: uppercase;
+      font-size: 11px;
+      width: 33.33%;
+      float: left;
+      position: relative;
+    }
+
+    #progressbar li:before {
+      content: counter(step);
+      counter-increment: step;
+      width: 20px;
+      line-height: 20px;
+      display: block;
+      font-size: 10px;
+      color: #333;
+      background: white;
+      border-radius: 10px;
+      margin: 0 auto 5px auto;
+    }
+
+    /*progressbar connectors*/
+    #progressbar li:after {
+      content: '';
+      width: 100%;
+      height: 2px;
+      background: white;
+      position: absolute;
+      left: -50%;
+      top: 9px;
+      z-index: -1;
+      /*put it behind the numbers*/
+    }
+
+    #progressbar li:first-child:after {
+      /*connector not needed before the first step*/
+      content: none;
+    }
+
+    /*marking active/completed steps green*/
+    /*The number of the step and the connector before it = green*/
+    #progressbar li.active:before,
+    #progressbar li.active:after {
+      background: #0A4069;
+      color: white;
+    }
+
+    svg {
+      margin-bottom: 4px;
+    }
+
+    .loader {
+      margin: 0 0 2em;
+      height: 100px;
+      width: 20%;
+      text-align: center;
+      padding: 1em;
+      margin: 0 auto 1em;
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    /*
+        Set the color of the icon
+      */
+    #loader-1 path,
+    #loader-1 rect {
+      fill: #0A4069;
+    }
+
+    /* The Modal (background) */
+    .modal {
+      display: none;
+      /* Hidden by default */
+      position: fixed;
+      /* Stay in place */
+      z-index: 1;
+      /* Sit on top */
+      padding-top: 100px;
+      /* Location of the box */
+      left: 0;
+      top: 0;
+      width: 100%;
+      /* Full width */
+      height: 100%;
+      /* Full height */
+      overflow: auto;
+      /* Enable scroll if needed */
+      background-color: rgb(0, 0, 0);
+      /* Fallback color */
+      background-color: rgba(0, 0, 0, 0.4);
+      /* Black w/ opacity */
+      border-radius: 3px;
+    }
+
+    /* Modal Content */
+    .modal-content {
+      background-color: #fefefe;
+      margin: auto;
+      padding: 30px;
+      border: 1px solid #888;
+      width: 80%;
+    }
+
+    /* The Close Button */
+    .close {
+      color: #aaaaaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .container {
+      display: block;
+      margin-bottom: 10px;
+      padding: 15px;
+      text-align: center;
+      background-color: #fff;
+      border-radius: 4px;
+    }
+
+    /*Start | On-Off Button Design*/
+    .btn-onoff {
+      position: relative;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .btn-onoff input {
+      display: block;
+      position: absolute;
+      opacity: 0
+    }
+
+    .btn-onoff span {
+      position: relative;
+      display: block;
+      width: 80px;
+      height: 34px;
+      border-radius: 40px;
+      background: #ccc;
+      border: 1px solid #ccc;
+      -webkit-transition: 400ms;
+      -moz-transition: 400ms;
+      -ms-transition: 400ms;
+      transition: 400ms
+    }
+
+    .btn-onoff input:checked~span {
+      border: 1px solid #4CAF50;
+      background: #4CAF50
+    }
+
+    .btn-onoff input~span:before {
+      content: 'NO';
+      display: block;
+      width: 34px;
+      height: 34px;
+      position: absolute;
+      right: 0px;
+      font-size: 14px;
+      font-family: "Arial";
+      font-weight: bold;
+      line-height: 34px;
+      color: #444;
+      padding: 0px 8px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      -webkit-transition: 500ms;
+      -moz-transition: 500ms;
+      -ms-transition: 500ms;
+      transition: 500ms
+    }
+
+    .btn-onoff input:checked~span:before {
+      content: 'YES';
+      right: 28px;
+      color: #fff
+    }
+
+    .btn-onoff input~span:after {
+      content: '';
+      position: absolute;
+      width: 26px;
+      height: 26px;
+      top: 4px;
+      left: 4px;
+      background: #fff;
+      border-radius: 50%;
+      -webkit-transition: 400ms;
+      -moz-transition: 400ms;
+      -ms-transition: 400ms;
+      transition: 400ms
+    }
+
+    .btn-onoff:hover input~span:after {
+      -webkit-transform: scale(0.9);
+      -moz-transform: scale(0.9);
+      -ms-transform: scale(0.9);
+      transform: scale(0.9)
+    }
+
+    .btn-onoff input:checked~span:after {
+      content: '';
+      left: 51px;
+    }
+
+
+
+    /*End | On-Off Button Design*/
+  </style>
+
+<style>
+	.f-modal-alert {
+		 margin: 20px;
+		 padding: 50px;
+	}
+	 .f-modal-alert .f-modal-icon {
+		 border-radius: 50%;
+		 border: 4px solid gray;
+		 box-sizing: content-box;
+		 height: 80px;
+		 margin: 20px auto;
+		 padding: 0;
+		 position: relative;
+		 width: 80px;
+	}
+	 .f-modal-alert .f-modal-alert {
+		 border-color: #A5DC86;
+	}
+	 .f-modal-alert .f-modal-icon.f-modal-success:after, .f-modal-alert .f-modal-icon.f-modal-success:before, .f-modal-alert .f-modal-icon.f-modal-error:after, .f-modal-alert .f-modal-icon.f-modal-error:before {
+		 background: #fff;
+		 content: "";
+		 height: 120px;
+		 position: absolute;
+		 transform: rotate(45deg);
+		 width: 60px;
+	}
+	 .f-modal-alert .f-modal-icon.f-modal-success:before, .f-modal-alert .f-modal-icon.f-modal-error:before {
+		 border-radius: 120px 0 0 120px;
+		 left: -33px;
+		 top: -7px;
+		 transform-origin: 60px 60px;
+		 transform: rotate(-45deg);
+	}
+	 .f-modal-alert .f-modal-icon.f-modal-success:after, .f-modal-alert .f-modal-icon.f-modal-error:after {
+		 border-radius: 0 120px 120px 0;
+		 left: 30px;
+		 top: -11px;
+		 transform-origin: 0 60px;
+		 transform: rotate(-45deg);
+	}
+	 .f-modal-alert .f-modal-icon.f-modal-success .f-modal-placeholder, .f-modal-alert .f-modal-icon.f-modal-error .f-modal-placeholder {
+		 border-radius: 50%;
+		 border: 4px solid rgba(165, 220, 134, 0.2);
+		 box-sizing: content-box;
+		 height: 80px;
+		 left: -4px;
+		 position: absolute;
+		 top: -4px;
+		 width: 80px;
+		 z-index: 2;
+	}
+	 .f-modal-alert .f-modal-icon.f-modal-success .f-modal-fix, .f-modal-alert .f-modal-icon.f-modal-error .f-modal-fix {
+		 background-color: #fff;
+		 height: 90px;
+		 left: 28px;
+		 position: absolute;
+		 top: 8px;
+		 transform: rotate(-45deg);
+		 width: 5px;
+		 z-index: 1;
+	}
+	 .f-modal-alert .f-modal-icon.f-modal-success .f-modal-line, .f-modal-alert .f-modal-icon.f-modal-error .f-modal-line {
+		 background-color: #A5DC86;
+		 border-radius: 2px;
+		 display: block;
+		 height: 5px;
+		 position: absolute;
+		 z-index: 2;
+	}
+	 .f-modal-alert .f-modal-icon.f-modal-success .f-modal-line.f-modal-tip, .f-modal-alert .f-modal-icon.f-modal-error .f-modal-line.f-modal-tip {
+		 left: 14px;
+		 top: 46px;
+		 transform: rotate(45deg);
+		 width: 25px;
+	}
+	 .f-modal-alert .f-modal-icon.f-modal-success .f-modal-line.f-modal-long, .f-modal-alert .f-modal-icon.f-modal-error .f-modal-line.f-modal-long {
+		 right: 8px;
+		 top: 38px;
+		 transform: rotate(-45deg);
+		 width: 47px;
+	}
+	 .f-modal-alert .f-modal-icon.f-modal-error {
+		 border-color: #F27474;
+	}
+	 .f-modal-alert .f-modal-icon.f-modal-error .f-modal-x-mark {
+		 display: block;
+		 position: relative;
+		 z-index: 2;
+	}
+	 .f-modal-alert .f-modal-icon.f-modal-error .f-modal-placeholder {
+		 border: 4px solid rgba(200, 0, 0, 0.2);
+	}
+	 .f-modal-alert .f-modal-icon.f-modal-error .f-modal-line {
+		 background-color: #F27474;
+		 top: 37px;
+		 width: 47px;
+	}
+	 .f-modal-alert .f-modal-icon.f-modal-error .f-modal-line.f-modal-left {
+		 left: 17px;
+		 transform: rotate(45deg);
+	}
+	 .f-modal-alert .f-modal-icon.f-modal-error .f-modal-line.f-modal-right {
+		 right: 16px;
+		 transform: rotate(-45deg);
+	}
+	 .f-modal-alert .f-modal-icon.f-modal-warning {
+		 border-color: #F8BB86;
+	}
+	 .f-modal-alert .f-modal-icon.f-modal-warning:before {
+		 -webkit-animation: pulseWarning 2s linear infinite;
+		 animation: pulseWarning 2s linear infinite;
+		 background-color: #fff;
+		 border-radius: 50%;
+		 content: "";
+		 display: inline-block;
+		 height: 100%;
+		 opacity: 0;
+		 position: absolute;
+		 width: 100%;
+	}
+	 .f-modal-alert .f-modal-icon.f-modal-warning:after {
+		 background-color: #fff;
+		 border-radius: 50%;
+		 content: "";
+		 display: block;
+		 height: 100%;
+		 position: absolute;
+		 width: 100%;
+		 z-index: 1;
+	}
+	 .f-modal-alert .f-modal-icon.f-modal-warning .f-modal-body {
+		 background-color: #F8BB86;
+		 border-radius: 2px;
+		 height: 47px;
+		 left: 50%;
+		 margin-left: -2px;
+		 position: absolute;
+		 top: 10px;
+		 width: 5px;
+		 z-index: 2;
+	}
+	 .f-modal-alert .f-modal-icon.f-modal-warning .f-modal-dot {
+		 background-color: #F8BB86;
+		 border-radius: 50%;
+		 bottom: 10px;
+		 height: 7px;
+		 left: 50%;
+		 margin-left: -3px;
+		 position: absolute;
+		 width: 7px;
+		 z-index: 2;
+	}
+	 .f-modal-alert .f-modal-icon + .f-modal-icon {
+		 margin-top: 50px;
+	}
+	 .animateSuccessTip {
+		 -webkit-animation: animateSuccessTip 0.75s;
+		 animation: animateSuccessTip 0.75s;
+	}
+	 .animateSuccessLong {
+		 -webkit-animation: animateSuccessLong 0.75s;
+		 animation: animateSuccessLong 0.75s;
+	}
+	 .f-modal-icon.f-modal-success.animate:after {
+		 -webkit-animation: rotatePlaceholder 4.25s ease-in;
+		 animation: rotatePlaceholder 4.25s ease-in;
+	}
+	 .f-modal-icon.f-modal-error.animate:after {
+		 -webkit-animation: rotatePlaceholder 4.25s ease-in;
+		 animation: rotatePlaceholder 4.25s ease-in;
+	}
+	 .animateErrorIcon {
+		 -webkit-animation: animateErrorIcon 0.5s;
+		 animation: animateErrorIcon 0.5s;
+	}
+	 .animateXLeft {
+		 -webkit-animation: animateXLeft 0.75s;
+		 animation: animateXLeft 0.75s;
+	}
+	 .animateXRight {
+		 -webkit-animation: animateXRight 0.75s;
+		 animation: animateXRight 0.75s;
+	}
+	 .scaleWarning {
+		 -webkit-animation: scaleWarning 0.75s infinite alternate;
+		 animation: scaleWarning 0.75s infinite alternate;
+	}
+	 .pulseWarningIns {
+		 -webkit-animation: pulseWarningIns 0.75s infinite alternate;
+		 animation: pulseWarningIns 0.75s infinite alternate;
+	}
+	 @-webkit-keyframes animateSuccessTip {
+		 0%, 54% {
+			 width: 0;
+			 left: 1px;
+			 top: 19px;
+		}
+		 70% {
+			 width: 50px;
+			 left: -8px;
+			 top: 37px;
+		}
+		 84% {
+			 width: 17px;
+			 left: 21px;
+			 top: 48px;
+		}
+		 100% {
+			 width: 25px;
+			 left: 14px;
+			 top: 45px;
+		}
+	}
+	 @keyframes animateSuccessTip {
+		 0%, 54% {
+			 width: 0;
+			 left: 1px;
+			 top: 19px;
+		}
+		 70% {
+			 width: 50px;
+			 left: -8px;
+			 top: 37px;
+		}
+		 84% {
+			 width: 17px;
+			 left: 21px;
+			 top: 48px;
+		}
+		 100% {
+			 width: 25px;
+			 left: 14px;
+			 top: 45px;
+		}
+	}
+	 @-webkit-keyframes animateSuccessLong {
+		 0%, 65% {
+			 width: 0;
+			 right: 46px;
+			 top: 54px;
+		}
+		 84% {
+			 width: 55px;
+			 right: 0;
+			 top: 35px;
+		}
+		 100% {
+			 width: 47px;
+			 right: 8px;
+			 top: 38px;
+		}
+	}
+	 @keyframes animateSuccessLong {
+		 0%, 65% {
+			 width: 0;
+			 right: 46px;
+			 top: 54px;
+		}
+		 84% {
+			 width: 55px;
+			 right: 0;
+			 top: 35px;
+		}
+		 100% {
+			 width: 47px;
+			 right: 8px;
+			 top: 38px;
+		}
+	}
+	 @-webkit-keyframes rotatePlaceholder {
+		 0%, 5% {
+			 transform: rotate(-45deg);
+		}
+		 100%, 12% {
+			 transform: rotate(-405deg);
+		}
+	}
+	 @keyframes rotatePlaceholder {
+		 0%, 5% {
+			 transform: rotate(-45deg);
+		}
+		 100%, 12% {
+			 transform: rotate(-405deg);
+		}
+	}
+	 @-webkit-keyframes animateErrorIcon {
+		 0% {
+			 transform: rotateX(100deg);
+			 opacity: 0;
+		}
+		 100% {
+			 transform: rotateX(0deg);
+			 opacity: 1;
+		}
+	}
+	 @keyframes animateErrorIcon {
+		 0% {
+			 transform: rotateX(100deg);
+			 opacity: 0;
+		}
+		 100% {
+			 transform: rotateX(0deg);
+			 opacity: 1;
+		}
+	}
+	 @-webkit-keyframes animateXLeft {
+		 0%, 65% {
+			 left: 82px;
+			 top: 95px;
+			 width: 0;
+		}
+		 84% {
+			 left: 14px;
+			 top: 33px;
+			 width: 47px;
+		}
+		 100% {
+			 left: 17px;
+			 top: 37px;
+			 width: 47px;
+		}
+	}
+	 @keyframes animateXLeft {
+		 0%, 65% {
+			 left: 82px;
+			 top: 95px;
+			 width: 0;
+		}
+		 84% {
+			 left: 14px;
+			 top: 33px;
+			 width: 47px;
+		}
+		 100% {
+			 left: 17px;
+			 top: 37px;
+			 width: 47px;
+		}
+	}
+	 @-webkit-keyframes animateXRight {
+		 0%, 65% {
+			 right: 82px;
+			 top: 95px;
+			 width: 0;
+		}
+		 84% {
+			 right: 14px;
+			 top: 33px;
+			 width: 47px;
+		}
+		 100% {
+			 right: 16px;
+			 top: 37px;
+			 width: 47px;
+		}
+	}
+	 @keyframes animateXRight {
+		 0%, 65% {
+			 right: 82px;
+			 top: 95px;
+			 width: 0;
+		}
+		 84% {
+			 right: 14px;
+			 top: 33px;
+			 width: 47px;
+		}
+		 100% {
+			 right: 16px;
+			 top: 37px;
+			 width: 47px;
+		}
+	}
+	 @-webkit-keyframes scaleWarning {
+		 0% {
+			 transform: scale(1);
+		}
+		 30% {
+			 transform: scale(1.02);
+		}
+		 100% {
+			 transform: scale(1);
+		}
+	}
+	 @keyframes scaleWarning {
+		 0% {
+			 transform: scale(1);
+		}
+		 30% {
+			 transform: scale(1.02);
+		}
+		 100% {
+			 transform: scale(1);
+		}
+	}
+	 @-webkit-keyframes pulseWarning {
+		 0% {
+			 background-color: #fff;
+			 transform: scale(1);
+			 opacity: 0.5;
+		}
+		 30% {
+			 background-color: #fff;
+			 transform: scale(1);
+			 opacity: 0.5;
+		}
+		 100% {
+			 background-color: #F8BB86;
+			 transform: scale(2);
+			 opacity: 0;
+		}
+	}
+	 @keyframes pulseWarning {
+		 0% {
+			 background-color: #fff;
+			 transform: scale(1);
+			 opacity: 0.5;
+		}
+		 30% {
+			 background-color: #fff;
+			 transform: scale(1);
+			 opacity: 0.5;
+		}
+		 100% {
+			 background-color: #F8BB86;
+			 transform: scale(2);
+			 opacity: 0;
+		}
+	}
+	 @-webkit-keyframes pulseWarningIns {
+		 0% {
+			 background-color: #F8D486;
+		}
+		 100% {
+			 background-color: #F8BB86;
+		}
+	}
+	 @keyframes pulseWarningIns {
+		 0% {
+			 background-color: #F8D486;
+		}
+		 100% {
+			 background-color: #F8BB86;
+		}
+	}
+
+  </style>
+
+
+</head>
+
+<body onload="StartUp()">
+  <form method="POST" id="msform" action="../user" onsubmit="completeSub()">
+    <a href="../">
+      <!-- <img class="top-image" src="https://drive.google.com/uc?export=download&id=1K7ccj0NSHRiObSpBYYTkMW_mdc5vOndo"
+        style="line-height: 1;width: 250px; margin: 10px; text-align:center;" alt="Own Energy"> -->
+      <img class="top-image" src="../own+menu+logo-removebg-preview.png"
+        style="line-height: 1;width: 250px; margin: 10px; text-align:center;" alt="Own Energy">
+    </a>
+    <!-- progressbar -->
+
+
+    <fieldset>
+      <h2 class="fs-title">NEW USER</h2>
+      <h3 class="fs-subtitle">Input User Information</h3>
+
+      <input id="name" maxlength="40" name="name" size="20" type="text" placeholder="Name" required /><br>
+      <input id="email" type="email" maxlength="40" name="email" size="20" type="text" placeholder="Email" required
+        oninput="ValidateEmail()" />
+
+
+      <span class="svg-container" id="validEmail"
+        style="position: absolute;top: 10.5rem;right: 3%;margin-right: 20px;display: none;">
+        <svg class="ft-green-tick" xmlns="http://www.w3.org/2000/svg" height="30" width="30" viewBox="0 0 48 48"
+          aria-hidden="true">
+          <circle class="circle" fill="#5bb543" cx="24" cy="24" r="22" />
+          <path class="tick" fill="none" stroke="#FFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"
+            stroke-miterlimit="10" d="M14 27l5.917 4.917L34 17" />
+        </svg>
+      </span>
+
+      <br>
+
+      <select name="accessLevel" id="accessLevel" oninput="checkAccessLevel()" required>
+        <% for(var i=0; i < data.accessLevels.length; i++) { %>
+          <option value="<%= data.accessLevels[i].id %>">
+            <%= data.accessLevels[i].Level %>
+          </option>
+          <% } %>
+      </select>
+
+      <div class="container" style="">
+        <label class="btn-onoff" style="font-size: 14px;font-family:'Arial';">CLOSER?</label>
+
+        <label class="btn-onoff">
+          <input type="checkbox" name="available" data-onoff="toggle"><span></span>
+        </label>
+      </div>
+
+
+      <!-- <div id="result" style="display: none;">Unchecked</div> -->
+      <!-- <input type="checkbox" id="available" name="available" value="available"  style="display: none;"> -->
+
+      <input id="calId" maxlength="40" name="calId" size="20" type="text" placeholder="Calendar ID" /><br>
+
+      <select name="location" id="location" oninput="checkLoc()" required>
+        <% for(var i=0; i < data.locations.length; i++) { %>
+          <option value="<%= data.locations[i].id %>">
+            <%= data.locations[i].name %>
+          </option>
+          <% } %>
+      </select>
+      <p id="locationError" style="color: #ff0000;font-size: 12px;display:none;">This account is being created in a
+        location other than your own.</p>
+
+
+      <input type="submit" name="submit" id="submit" class="submit action-button" value="Submit" />
+    </fieldset>
+  </form>
+  <!-- The Modal -->
+  <div id="errorModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p id="errorMsg">Please fill out all feilds!</p>
+    </div>
+
+
+
+  </div>
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js'></script>
+  <script>
+
+    var setTarget = document.querySelector("[data-onoff]");
+    var result = document.getElementById('result');
+    setTarget.addEventListener("change", function () {
+      if (this.checked) {
+        result.innerHTML = 'Checked';
+      }
+      else {
+        result.innerHTML = 'Unchecked';
+      }
+    });
+
+    function checkAccessLevel() {
+      // console.log( $( "#accessLevel option:selected" ).text().trim());
+
+      if ($("#accessLevel option:selected").text().trim() != 'Setter') {
+        $(".container").show();
+      }
+      else {
+        $(".container").hide();
+      };
+    }
+
+    function checkLoc() {
+      var currLoc = '<%= data.currLocId %>';
+      if ($('#location').val() != currLoc) {
+        $("#locationError").show();
+      }
+      else {
+        $("#locationError").hide();
+      };
+    }
+
+    
+
+    //jQuery time
+    var current_fs, next_fs, previous_fs; //fieldsets
+    var left, opacity, scale; //fieldset properties which we will animate
+    var animating; //flag to prevent quick multi-click glitches
+    var askedNotes = false;
+    var modal = document.getElementById("errorModal");
+    var msg = document.getElementById("errorMsg");
+    var span = document.getElementsByClassName("close")[0];
+
+    span.onclick = function () {
+      modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+
+    $(".next").click(function () {
+      if (animating) return false;
+
+      if ($(this).attr('id') == 'next1') {
+        var fName = document.getElementById('first_name').value;
+        var lName = document.getElementById('last_name').value;
+        var phone = document.getElementById('phone').value;
+        var street = document.getElementById('street').value;
+        var city = document.getElementById('city').value;
+        var state = document.getElementById('state').value;
+        var zip = document.getElementById('zip').value;
+        if (fName == '' || lName == '' || phone == '' || street == '' || city == '' || state == '' || zip == '') {
+          msg.innerHTML = "You must fill out the Homeowner's Information";
+          modal.style.display = "block";
+
+          return false;
+        }
+
+      }
+
+      if ($(this).attr('id') == 'next2') {
+        var utilBill = document.getElementById('utilPic').value;
+        var notes = document.getElementById('notes').value;
+
+        // TODO remove this after testing
+        /*if (utilBill == ''){
+          msg.innerHTML = "You must upload the Utility Bill";
+          modal.style.display = "block";
+          return false;
+        }*/
+        if (notes == '' && askedNotes == false) {
+          msg.innerHTML = "Are your sure there are no notes?";
+          modal.style.display = "block";
+          askedNotes = true;
+          return false;
+        }
+      }
+
+      animating = true;
+
+
+
+      current_fs = $(this).parent();
+      next_fs = $(this).parent().next();
+
+      //activate next step on progressbar using the index of next_fs
+      $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+
+      //show the next fieldset
+      next_fs.show();
+      //hide the current fieldset with style
+      current_fs.animate({ opacity: 0 }, {
+        step: function (now, mx) {
+          //as the opacity of current_fs reduces to 0 - stored in "now"
+          //1. scale current_fs down to 80%
+          scale = 1 - (1 - now) * 0.2;
+          //2. bring next_fs from the right(50%)
+          left = (now * 50) + "%";
+          //3. increase opacity of next_fs to 1 as it moves in
+          opacity = 1 - now;
+          current_fs.css({
+            'transform': 'scale(' + scale + ')',
+            'position': 'absolute'
+          });
+          next_fs.css({ 'left': left, 'opacity': opacity });
+        },
+        duration: 800,
+        complete: function () {
+          current_fs.hide();
+          animating = false;
+        },
+        //this comes from the custom easing plugin
+        easing: 'easeInOutBack'
+      });
+    });
+
+    $(".previous").click(function () {
+      if (animating) return false;
+      animating = true;
+      askedNotes = false;
+
+
+
+      current_fs = $(this).parent();
+      previous_fs = $(this).parent().prev();
+
+      //de-activate current step on progressbar
+      $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+
+      //show the previous fieldset
+      previous_fs.show();
+      //hide the current fieldset with style
+      current_fs.animate({ opacity: 0 }, {
+        step: function (now, mx) {
+          //as the opacity of current_fs reduces to 0 - stored in "now"
+          //1. scale previous_fs from 80% to 100%
+          scale = 0.8 + (1 - now) * 0.2;
+          //2. take current_fs to the right(50%) - from 0%
+          left = ((1 - now) * 50) + "%";
+          //3. increase opacity of previous_fs to 1 as it moves in
+          opacity = 1 - now;
+          current_fs.css({ 'left': left });
+          previous_fs.css({ 'transform': 'scale(' + scale + ')', 'opacity': opacity });
+        },
+        duration: 800,
+        complete: function () {
+          current_fs.hide();
+          animating = false;
+        },
+        //this comes from the custom easing plugin
+        easing: 'easeInOutBack'
+      });
+    });
+  </script>
+
+  <script src="https://www.gstatic.com/firebasejs/4.0.0/firebase.js"></script>
+  <script>
+    var validEmail;
+
+    function StartUp() {
+      checkLoc();
+      validEmail = false;
+    }
+
+
+    var firstNBtn = document.getElementById("next1");
+    firstNBtn.addEventListener("click", CheckFirstPageValidation);
+
+    function CheckFirstPageValidation() {
+
+    }
+    var uploadBtn = document.getElementById("picUpload");
+    uploadBtn.addEventListener("click", OpenFilePicker);
+    var fileBox = document.getElementById("utilPic");
+
+
+    function OpenFilePicker() {
+      fileBox.click();
+    }
+
+    fileBox.addEventListener("change", UploadToGoogleDrive);
+    var file, reader = new FileReader();
+
+    function UploadToGoogleDrive() {
+      file = $('#utilPic')[0].files[0];
+      reader.readAsDataURL(file);
+    }
+
+    // Upload the file to Google Drive
+    reader.onloadend = function (e) {
+      document.getElementById("picUpload").style.display = 'none';
+      document.getElementById('checkMark').style.display = 'block';
+    };
+
+
+
+    function GetAppTimes() {
+      document.getElementById('apptTime').style.display = "none";
+      document.getElementById('loadCircle').style.display = "block";
+
+      var selectedDate = document.getElementById('apptDay').value;
+
+      $.ajax({
+        url: "/api/getApptTimes",
+        type: "get",
+        dataType: 'json',
+        data: { "selectedDate": selectedDate },
+
+        success: function (data, status, xhr) {
+          SetAppTimes(data);
+        },
+        error: function (jqXhr, textStatus, errorMessage) {
+          console.log(data.paymentId);
+          console.log(errorMessage);
+        }
+      });
+
+    }
+
+
+    function isEmail(email){
+      var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+      return email.match(validRegex);
+    }    
+
+    function ValidateEmail() {
+
+      var email = document.getElementById('email').value;
+      var submit = document.getElementById('submit');
+
+      $.ajax({
+        url: "/api/getEmail",
+        type: "get",
+        dataType: 'json',
+        data: { "email": email },
+
+        success: function (data, status, xhr) {
+          if (data.length != 0 || !isEmail(email)) {
+            document.getElementById('validEmail').style.display = 'none';
+            validEmail = false;
+          } else {
+            validEmail = true;
+            document.getElementById('validEmail').style.display = 'inline-block';
+          }
+        },
+        error: function (jqXhr, textStatus, errorMessage) {
+          console.log(errorMessage);
+        }
+      });
+
+    }
+
+    function completeSub(){
+      console.log('I;m Runnign!')
+      if (!validEmail){
+        var modal = document.getElementById("errorModal");
+        var msg = document.getElementById("errorMsg");
+        msg.innerHTML = 'You must enter a valid email address that has not been used before!';
+        modal.style.display = "block";
+        event.preventDefault();
+        return false;
+      }
+    }
+
+    function SetAppTimes(times) {
+      document.getElementById('apptTime').style.visibility = "visible";
+      document.getElementById('apptTime').style.display = "block";
+      document.getElementById('loadCircle').style.display = "none";
+
+      var select = document.getElementById('apptTime');
+      select.innerHTML = '';
+      var opt = document.createElement('option');
+      opt.innerHTML = 'Appointment Time';
+      select.appendChild(opt);
+
+      for (var i = 0; i < times.length; i++) {
+        opt = document.createElement('option');
+        opt.value = times[i];
+        opt.innerHTML = times[i];
+        select.appendChild(opt);
+      }
+    }
+
+    function SetApptTime() {
+      var select = document.getElementById('apptDay');
+      var dateTime = select.options[select.selectedIndex].text;
+      dateTime += ' ';
+      select = document.getElementById('apptTime');
+      dateTime += select.options[select.selectedIndex].value;
+      document.getElementById('00N8c00000aUPW7').value = dateTime;
+    }
+
+      //Remaing Code Goes Here
+  </script>
+</body>
+
+</html>

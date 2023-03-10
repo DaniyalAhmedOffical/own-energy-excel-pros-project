@@ -1,0 +1,61 @@
+### Create
+
+
+### 
+
+POST http://localhost:8080/expense
+Content-Type: application/json
+
+{
+    "payDate": "2020-01-01",
+    "type": "PayCode",
+    "user": "userId",
+    "description": "description",
+    "amount": 100,
+    "paidOut": false,
+    "projectId": "P3gEFBbw5VkopwRCbkNs"
+}
+
+###
+
+### Read
+
+GET http://localhost:8080/expense?expenseId=10WSteO9zvgTEO0Vsa7G
+Content-Type: application/json
+
+
+###
+
+### UPDATE
+
+POST http://localhost:8080/expense
+Content-Type: application/json
+
+{
+    "method": "put",
+    "expenseId": "10WSteO9zvgTEO0Vsa7G",
+    "payDate": "2020-01-01",
+    "type": "PayCode",
+    "user": "userId",
+    "description": "description",
+    "amount": 100,
+    "paidOut": false,
+    "projectId": "P3gEFBbw5VkopwRCbkNs"
+}
+
+###
+
+### DELETE
+
+POST http://localhost:8080/expense
+Content-Type: application/json
+
+{
+    "method": "delete",
+    "expenseId": "F5YhQTUUmVaCJDrjZp8A"   
+}
+
+###
+
+GET http://localhost:8080/apiExpenses?userInput
+Content-Type: application/json
